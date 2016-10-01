@@ -105,7 +105,7 @@
 <meta name="description" content="Front-End Developer">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MaYue's Notes">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/web-app/index.html">
 <meta property="og:site_name" content="MaYue's Notes">
 <meta property="og:description" content="Front-End Developer">
 <meta name="twitter:card" content="summary">
@@ -131,9 +131,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/categories/web-app/"/>
 
-  <title> MaYue's Notes </title>
+  <title> 分类: web app | MaYue's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -154,9 +154,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -253,130 +251,40 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <section id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        web app
+        <small>分类</small>
+      </h2>
+    </div>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/27/优惠券活动模版功能开发之填坑小结/" itemprop="url">
-                  优惠券活动模版功能开发之填坑小结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-27T23:38:56+08:00" content="2016-09-27">
-              2016-09-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web-app/" itemprop="url" rel="index">
-                    <span itemprop="name">web app</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/27/优惠券活动模版功能开发之填坑小结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/27/优惠券活动模版功能开发之填坑小结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
-      
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-          <h3 id="踩坑背景简述"><a href="#踩坑背景简述" class="headerlink" title="踩坑背景简述"></a>踩坑背景简述</h3><p>最近负责养车M端优惠券活动模版功能的开发，由于这次开发任务本来不是安排给我的，所以这个功能产品在做需求评审宣讲时我没有参加，固很多逻辑和交互细节都不是很清楚，当然也包括M端一些不能解的坑在宣讲时也没有向产品讲清楚，到我这就只能接受得按照原型去实现…迎难而上，开整！</p>
-<h3 id="一-fixed定位和输入框弹出键盘问题"><a href="#一-fixed定位和输入框弹出键盘问题" class="headerlink" title="一.fixed定位和输入框弹出键盘问题"></a>一.fixed定位和输入框弹出键盘问题</h3><h4 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h4><p>看了原型设计就发现了一个不好解的坑：需求是要把带文本框的登录窗浮层固定在浏览器可视区最底部。</p>
-<p>大概就是这个样子（红色区域）：</p>
-<p><img src="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG442.jpeg" alt=""></p>
-<p>大家想必一看也知道怎么回事了，要实现底部固定定位显示就得用<code>position: fixed;</code>，但是有输入框就会有软键盘弹出，<strong><em>fixed</em></strong>加上弹出键盘产生的各种兼容性问题各种奇奇怪怪的现象各种闪屏卡屏问题，像这种常识性的前端坑应该在需求评审时就打回去或者M端存在的问题和风险应该向产品和项目讲清楚的，好像并没有…</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/27/优惠券活动模版功能开发之填坑小结/#more" rel="contents">
-              阅读全文 &raquo;
+            <a class="post-title-link" href="/2016/09/27/优惠券活动模版功能开发之填坑小结/" itemprop="url">
+              
+                <span itemprop="name">优惠券活动模版功能开发之填坑小结</span>
+              
             </a>
-          </div>
         
-      
-    </div>
+      </h1>
 
-    <div>
-      
-    </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-09-27T23:38:56+08:00"
+              content="2016-09-27" >
+          09-27
+        </time>
+      </div>
 
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+    </header>
   </article>
 
 
@@ -384,6 +292,7 @@
   </section>
 
   
+
 
 
           </div>

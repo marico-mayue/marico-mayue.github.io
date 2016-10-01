@@ -1,0 +1,770 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="原创," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="踩坑背景简述最近负责养车M端优惠券活动模版功能的开发，由于这次开发任务本来不是安排给我的，所以这个功能产品在做需求评审宣讲时我没有参加，固很多逻辑和交互细节都不是很清楚，当然也包括M端一些不能解的坑在宣讲时也没有向产品讲清楚，到我这就只能接受得按照原型去实现…迎难而上，开整！
+一.fixed定位和输入框弹出键盘问题遇到的坑看了原型设计就发现了一个不好解的坑：需求是要把带文本框的登录窗浮层固定在浏览">
+<meta property="og:type" content="article">
+<meta property="og:title" content="优惠券活动模版功能开发之填坑小结">
+<meta property="og:url" content="http://yoursite.com/2016/09/27/优惠券活动模版功能开发之填坑小结/index.html">
+<meta property="og:site_name" content="MaYue's Notes">
+<meta property="og:description" content="踩坑背景简述最近负责养车M端优惠券活动模版功能的开发，由于这次开发任务本来不是安排给我的，所以这个功能产品在做需求评审宣讲时我没有参加，固很多逻辑和交互细节都不是很清楚，当然也包括M端一些不能解的坑在宣讲时也没有向产品讲清楚，到我这就只能接受得按照原型去实现…迎难而上，开整！
+一.fixed定位和输入框弹出键盘问题遇到的坑看了原型设计就发现了一个不好解的坑：需求是要把带文本框的登录窗浮层固定在浏览">
+<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG442.jpeg">
+<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG411.jpeg">
+<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG40.jpeg">
+<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG43.jpeg">
+<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG29.jpeg">
+<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG30.jpeg">
+<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG35.jpeg">
+<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG333.jpeg">
+<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG36.jpeg">
+<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG38.jpeg">
+<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG39.jpeg">
+<meta property="og:updated_time" content="2016-09-27T15:42:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="优惠券活动模版功能开发之填坑小结">
+<meta name="twitter:description" content="踩坑背景简述最近负责养车M端优惠券活动模版功能的开发，由于这次开发任务本来不是安排给我的，所以这个功能产品在做需求评审宣讲时我没有参加，固很多逻辑和交互细节都不是很清楚，当然也包括M端一些不能解的坑在宣讲时也没有向产品讲清楚，到我这就只能接受得按照原型去实现…迎难而上，开整！
+一.fixed定位和输入框弹出键盘问题遇到的坑看了原型设计就发现了一个不好解的坑：需求是要把带文本框的登录窗浮层固定在浏览">
+<meta name="twitter:image" content="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG442.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/27/优惠券活动模版功能开发之填坑小结/"/>
+
+  <title> 优惠券活动模版功能开发之填坑小结 | MaYue's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MaYue's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                优惠券活动模版功能开发之填坑小结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-27T23:38:56+08:00" content="2016-09-27">
+              2016-09-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web-app/" itemprop="url" rel="index">
+                    <span itemprop="name">web app</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/27/优惠券活动模版功能开发之填坑小结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/27/优惠券活动模版功能开发之填坑小结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="踩坑背景简述"><a href="#踩坑背景简述" class="headerlink" title="踩坑背景简述"></a>踩坑背景简述</h3><p>最近负责养车M端优惠券活动模版功能的开发，由于这次开发任务本来不是安排给我的，所以这个功能产品在做需求评审宣讲时我没有参加，固很多逻辑和交互细节都不是很清楚，当然也包括M端一些不能解的坑在宣讲时也没有向产品讲清楚，到我这就只能接受得按照原型去实现…迎难而上，开整！</p>
+<h3 id="一-fixed定位和输入框弹出键盘问题"><a href="#一-fixed定位和输入框弹出键盘问题" class="headerlink" title="一.fixed定位和输入框弹出键盘问题"></a>一.fixed定位和输入框弹出键盘问题</h3><h4 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h4><p>看了原型设计就发现了一个不好解的坑：需求是要把带文本框的登录窗浮层固定在浏览器可视区最底部。</p>
+<p>大概就是这个样子（红色区域）：</p>
+<p><img src="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG442.jpeg" alt=""></p>
+<p>大家想必一看也知道怎么回事了，要实现底部固定定位显示就得用<code>position: fixed;</code>，但是有输入框就会有软键盘弹出，<strong><em>fixed</em></strong>加上弹出键盘产生的各种兼容性问题各种奇奇怪怪的现象各种闪屏卡屏问题，像这种常识性的前端坑应该在需求评审时就打回去或者M端存在的问题和风险应该向产品和项目讲清楚的，好像并没有…</p>
+<a id="more"></a>
+<h4 id="实践折中解决办法"><a href="#实践折中解决办法" class="headerlink" title="实践折中解决办法"></a>实践折中解决办法</h4><p>经过和产品耐心的一遍又一遍的讲解这个坑的问题（包括走邮件这种很正式的流程…）后，产品才答应将登录窗底部浮层固定显示改为点击按钮模态弹窗形式显示。有输入框弹出键盘那<strong><em>fixed</em></strong>肯定不能用啊，那只有弹窗<code>position: absolute;</code>了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.modal-dialog &#123;</div><div class="line">  position: absolute;</div><div class="line">  top: 38%;</div><div class="line">  left: 50%;</div><div class="line">  -webkit-transform: translate3d(-50%, -50%, 0);</div><div class="line">  transform: translate3d(-50%, -50%, 0);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么这样的话为了不让浮层跟随页面滑动，<code>body</code>和<code>html</code>就得动态添加<code>class</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.fn-overflow-hide &#123;</div><div class="line">  position: relative;</div><div class="line">  overflow: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 未登录时点击浮层立即领取</div><div class="line">$(&apos;.btn-receive&apos;, $footerBtnGroups).on(&apos;click&apos;, function(event) &#123;</div><div class="line">  $(&apos;html, body&apos;).addClass(&apos;fn-overflow-hide&apos;);</div><div class="line">  $loginReceiveModal.removeClass(&apos;fn-hide&apos;);</div><div class="line">  $telephoneInput.trigger(&apos;click&apos;).focus();</div><div class="line"></div><div class="line">  event.stopPropagation();</div><div class="line">  event.preventDefault();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>看下真机上的实际效果吧。</p>
+<p>默认页面长这个样子：</p>
+<p><img src="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG411.jpeg" alt=""></p>
+<p>点击<strong><em>立即使用</em></strong>弹出登录窗</p>
+<p><img src="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG40.jpeg" alt=""></p>
+<p>呃呃…两个问题：1.内容区被置顶；2.弹窗移出了浏览器可视区</p>
+<p>这是不希望看到的，我希望它能记住我当前滑动页面所处可视区的位置，即点击按钮时获取当前<code>body</code>的<code>scrollTop</code>值，当关闭窗口是将这个值设置回来，并让页面内容区移动<code>scrollTop</code>值个像素位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var bodyScrollTop = 0; // body的scrollTop值</div><div class="line"></div><div class="line">// 未登录时点击浮层立即领取</div><div class="line">$(&apos;.btn-receive&apos;, $footerBtnGroups).on(&apos;click&apos;, function(event) &#123;</div><div class="line">  bodyScrollTop = $(&apos;body&apos;).eq(0).scrollTop();</div><div class="line"></div><div class="line">  $couponActivityMain.css(&#123;</div><div class="line">    &apos;-webkit-transform&apos;: &apos;translate3d(0, -&apos; + bodyScrollTop + &apos;px, 0)&apos;,</div><div class="line">    &apos;transform&apos;: &apos;translate3d(0, -&apos; + bodyScrollTop + &apos;px, 0)&apos;</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  $(&apos;html, body&apos;).addClass(&apos;fn-overflow-hide&apos;);</div><div class="line">  $loginReceiveModal.removeClass(&apos;fn-hide&apos;);</div><div class="line">  $telephoneInput.trigger(&apos;click&apos;).focus();</div><div class="line">  $(&apos;body&apos;).eq(0).scrollTop(0);</div><div class="line"></div><div class="line">  event.stopPropagation();</div><div class="line">  event.preventDefault();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>看下效果</p>
+<p><img src="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG43.jpeg" alt=""></p>
+<p>嗯…不错，页面留在了滑动的当前位置没有置顶，登录弹窗也正确显示。由于使用了<code>position: absolute;</code>，所以不会有乱七八糟的问题。</p>
+<p>最后在<strong><em>取消</em></strong> 和 <strong><em>立即领取</em></strong>成功后将<code>body</code>设回之前全局变量纪录的<code>scrollTop</code>值并将内容区Dom的<code>translate</code>移除即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 隐藏登录领取弹窗</div><div class="line">function hideLoginReceiveModal() &#123;</div><div class="line">  $telephoneInput.val(&apos;&apos;);</div><div class="line">  $validateCodeInput.val(&apos;&apos;);</div><div class="line"></div><div class="line">  $(&apos;html, body&apos;).removeClass(&apos;fn-overflow-hide&apos;);</div><div class="line">  $couponActivityMain.removeAttr(&apos;style&apos;);</div><div class="line">  $(&apos;body&apos;).eq(0).scrollTop(bodyScrollTop);</div><div class="line"></div><div class="line">  $loginReceiveModal.addClass(&apos;fn-hide&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>So…这个问题算是以彼此（开发和产品）都能接受的方式解决了。</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>虽然这个坑很常识，但是没能在评审时提出来是前端的失误（？），希望大家今后引以为鉴，能预知到的坑尽量早点说明白别坑自己。</p>
+<h3 id="二-Safari浏览器通过Schema协议呼起App客户端问题"><a href="#二-Safari浏览器通过Schema协议呼起App客户端问题" class="headerlink" title="二.Safari浏览器通过Schema协议呼起App客户端问题"></a>二.Safari浏览器通过Schema协议呼起App客户端问题</h3><h4 id="遇到的坑-1"><a href="#遇到的坑-1" class="headerlink" title="遇到的坑"></a>遇到的坑</h4><p>需求要求我的页面如果在App客户端中内嵌则点击<strong><em>立即使用</em></strong>按钮返回App首页，如果不在App中内嵌在M页中，则如果该用户安装了App客户端点击按钮呼起App到首页，如果没有安装App则跳转到我们App的下载页面。</p>
+<p>网上查了下大概了解了下解决办法都是创建一个iframe及设置定时器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 创建一个隐藏的iframe</div><div class="line">var iframe = $(&apos;&lt;iframe style=&quot;display: none;&quot; src=&quot;usehome://main/show&quot;&gt;&lt;/iframe&gt;&apos;);</div><div class="line">var downloadUrl = &apos;http://yc.m.autohome.com.cn/v2/app/download.html?PreciseAD=&apos; + PreciseAD;</div><div class="line">$(&apos;body&apos;).append(iframe);</div><div class="line"></div><div class="line">var openTime = Date.now(); // 记录唤醒时间</div><div class="line">window.setTimeout(function() &#123;</div><div class="line">  iframe.remove();</div><div class="line">  if (Date.now() - openTime &lt; 1400) &#123;</div><div class="line">    var UA = navigator.userAgent;</div><div class="line">    if (/MicroMessenger/ig.test(UA)) &#123;</div><div class="line">      window.location.href = downloadUrl;</div><div class="line">      return false;</div><div class="line">    &#125; else &#123; // eslint-disable-line</div><div class="line">      if (by.versions.android) &#123;</div><div class="line">        window.location.href = downloadUrl;</div><div class="line">      &#125; else &#123;</div><div class="line">        window.location.href = &apos;http://itunes.apple.com/cn/app/qi-che-zhi-jia/id898126444?mt=8&apos;;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;, 1000);</div></pre></td></tr></table></figure>
+<p>先来看看在IOS上的UC和QQ浏览器的唤起表现：</p>
+<p><img src="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG29.jpeg" alt=""></p>
+<p><img src="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG30.jpeg" alt=""></p>
+<p>嗯…不错，表现正常，完美唤起。</p>
+<h4 id="实践折中解决办法-1"><a href="#实践折中解决办法-1" class="headerlink" title="实践折中解决办法"></a>实践折中解决办法</h4><p>再来看看我们的Safari浏览器，发现Safari此时并没有唤起App而是直接跳走App Store了。这不是我们想要的，既然Iframe不起作用，那只能通过<code>window.location.href</code>了，因为它通过window.location指向URL Scheme直接打开本地应用，加上看看。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">if (by.versions.iPhone || by.versions.webApp) &#123;</div><div class="line">  window.location.href = &apos;usehome://main/show&apos;;</div><div class="line">&#125;</div><div class="line">// 创建一个隐藏的iframe</div><div class="line">var iframe = $(&apos;&lt;iframe style=&quot;display: none;&quot; src=&quot;usehome://main/show&quot;&gt;&lt;/iframe&gt;&apos;);</div><div class="line">$(&apos;body&apos;).append(iframe);</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>当你打开链接时，Mobile Safari通过window.location指向URL Scheme，直接打开本地应用，否则1s后打开下载页面。如果应用成功打开，生命周期就是激活状态，那么浏览器的状态是进入后台,页面里的所有操作都被注销了,显然timeout会被clear掉，但如果你没有成功打开应用即返回404，那么1s后页面当然会自动跳转了。</p>
+<p><img src="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG35.jpeg" alt=""></p>
+<p>哦了，可以唤起App客户端。但是同时发现如果不立即点击<strong><em>打开</em></strong>按钮，页面依旧是会跳下载页的…</p>
+<p>这可不好啊，那我第一时间的想法是让它等待的时间稍微再长点，给用户思考确认时间啊，那么代码变成了这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">// 如果在Safari浏览器中</div><div class="line">var millisec; // 等待延时时间</div><div class="line">if (by.versions.iPhone || by.versions.webApp) &#123;</div><div class="line">  millisec = 3000;</div><div class="line">  window.location.href = &apos;usehome://main/show&apos;;</div><div class="line">&#125; else &#123;</div><div class="line">  millisec = 1000;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 创建一个隐藏的iframe</div><div class="line">var iframe = $(&apos;&lt;iframe style=&quot;display: none;&quot; src=&quot;usehome://main/show&quot;&gt;&lt;/iframe&gt;&apos;);</div><div class="line">$(&apos;body&apos;).append(iframe);</div><div class="line"></div><div class="line">var openTime = Date.now(); // 记录唤醒时间</div><div class="line">window.setTimeout(function() &#123;</div><div class="line"> iframe.remove();</div><div class="line"> if (Date.now() - openTime &lt; (millisec + 400)) &#123;</div><div class="line">   var UA = navigator.userAgent;</div><div class="line">   if (/MicroMessenger/ig.test(UA)) &#123;</div><div class="line">     window.location.href = &apos;http://yc.m.autohome.com.cn/v2/app/download.html?PreciseAD=&apos; + PreciseAD;</div><div class="line">     return false;</div><div class="line">   &#125; else &#123; // eslint-disable-line</div><div class="line">     if (by.versions.android) &#123;</div><div class="line">       window.location.href = &apos;http://yc.m.autohome.com.cn/v2/app/download.html?PreciseAD=&apos; + PreciseAD;</div><div class="line">     &#125; else &#123;</div><div class="line">       window.location.href = &apos;http://itunes.apple.com/cn/app/qi-che-zhi-jia/id898126444?mt=8&apos;;</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div><div class="line">&#125;, millisec);</div></pre></td></tr></table></figure>
+<p>再看下发现页面不会立即跳转走，定时器等待用户确认，点击确认正常唤起App.</p>
+<p><img src="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG333.jpeg" alt=""></p>
+<p>但是时不时的不点击确认还是会直接跳下载页，为了不让其直接通过http协议跳转（不需要用户的确认），我查到了App Store的URL Scheme协议<code>itms-apps://</code>,改成该种方式发现果然好使，等待时页面不会再跳转走了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.location.href = &apos;itms-apps://itunes.apple.com/cn/app/qi-che-zhi-jia/id898126444?mt=8&apos;;</div></pre></td></tr></table></figure>
+<p>当用户未安装App时，由于找不到Scheme定义的地址浏览器会先弹出一个提示窗：</p>
+<p><img src="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG36.jpeg" alt=""></p>
+<p>这个是系统提示没法避免，只能点击确定，之后3s延时后（确认去关闭这个提示窗的时间刚好定时器在走时间）会弹出是否打开App Store的确认弹窗：</p>
+<p><img src="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG38.jpeg" alt=""></p>
+<p>点击确认正常打开App Store。</p>
+<p><img src="http://oe3sqmqy4.bkt.clouddn.com/WechatIMG39.jpeg" alt=""></p>
+<p>最后，经过测试同学和产品同学的使用体验都能够接受这样的处理方式。测试同学也没发现其他什么问题。</p>
+<p>So…这个坑也算顺利跨过去了！</p>
+<h4 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h4><p>可能我的解决方法也并不是最优的，也许还有更好的，希望今后亲们遇到这两个坑了可以参考下我的这个填坑小结，如有更好的解决方案欢迎交流学习。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="马跃Marico WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="马跃Marico Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/原创/" rel="tag">#原创</a>
+          
+        </div>
+      
+
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/27/优惠券活动模版功能开发之填坑小结/"
+           data-title="优惠券活动模版功能开发之填坑小结" data-url="http://yoursite.com/2016/09/27/优惠券活动模版功能开发之填坑小结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="马跃Marico" />
+          <p class="site-author-name" itemprop="name">马跃Marico</p>
+          <p class="site-description motion-element" itemprop="description">Front-End Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mayue2015" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/5566587/marico" target="_blank" title="Stack Overflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Stack Overflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2089711385?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/MaYueMarico" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#踩坑背景简述"><span class="nav-number">1.</span> <span class="nav-text">踩坑背景简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一-fixed定位和输入框弹出键盘问题"><span class="nav-number">2.</span> <span class="nav-text">一.fixed定位和输入框弹出键盘问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#遇到的坑"><span class="nav-number">2.1.</span> <span class="nav-text">遇到的坑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实践折中解决办法"><span class="nav-number">2.2.</span> <span class="nav-text">实践折中解决办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">2.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-Safari浏览器通过Schema协议呼起App客户端问题"><span class="nav-number">3.</span> <span class="nav-text">二.Safari浏览器通过Schema协议呼起App客户端问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#遇到的坑-1"><span class="nav-number">3.1.</span> <span class="nav-text">遇到的坑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实践折中解决办法-1"><span class="nav-number">3.2.</span> <span class="nav-text">实践折中解决办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结-1"><span class="nav-number">3.3.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">马跃Marico</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"marico-mayue"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
