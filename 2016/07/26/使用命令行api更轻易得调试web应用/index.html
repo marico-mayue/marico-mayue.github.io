@@ -1,0 +1,842 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="开发调试,控制台命令行API," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/avatar.png?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="原文链接：http://developer.telerik.com/content-types/tutorials/easier-web-application-debugging-command-line-api/
+
+
+很多年以前，调试一段JavaScript代码几乎全部依赖于console.log()来调用正在研究中的一个或多个函数。有时你已经意识到，问题不是在这些功能而是在一个由他们调用的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用命令行API更轻易得调试Web应用">
+<meta property="og:url" content="http://yoursite.com/2016/07/26/使用命令行api更轻易得调试web应用/index.html">
+<meta property="og:site_name" content="MaYue's Notes">
+<meta property="og:description" content="原文链接：http://developer.telerik.com/content-types/tutorials/easier-web-application-debugging-command-line-api/
+
+
+很多年以前，调试一段JavaScript代码几乎全部依赖于console.log()来调用正在研究中的一个或多个函数。有时你已经意识到，问题不是在这些功能而是在一个由他们调用的">
+<meta property="og:image" content="http://developer.telerik.com/wp-content/uploads/2016/05/command_line_api_header.jpg">
+<meta property="og:image" content="http://developer.telerik.com/wp-content/uploads/2016/05/getEventListeners.jpg">
+<meta property="og:image" content="http://10.168.0.151/mayue/images/eventpic.jpg">
+<meta property="og:updated_time" content="2016-08-30T08:02:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用命令行API更轻易得调试Web应用">
+<meta name="twitter:description" content="原文链接：http://developer.telerik.com/content-types/tutorials/easier-web-application-debugging-command-line-api/
+
+
+很多年以前，调试一段JavaScript代码几乎全部依赖于console.log()来调用正在研究中的一个或多个函数。有时你已经意识到，问题不是在这些功能而是在一个由他们调用的">
+<meta name="twitter:image" content="http://developer.telerik.com/wp-content/uploads/2016/05/command_line_api_header.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/26/使用命令行api更轻易得调试web应用/"/>
+
+  <title> 使用命令行API更轻易得调试Web应用 | MaYue's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MaYue's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '我的博客笔记','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用命令行API更轻易得调试Web应用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-26T00:00:00+08:00" content="2016-07-26">
+              2016-07-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端技术/" itemprop="url" rel="index">
+                    <span itemprop="name">前端技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/26/使用命令行api更轻易得调试web应用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/26/使用命令行api更轻易得调试web应用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>原文链接：<a href="http://developer.telerik.com/content-types/tutorials/easier-web-application-debugging-command-line-api/" target="_blank" rel="external">http://developer.telerik.com/content-types/tutorials/easier-web-application-debugging-command-line-api/</a></p>
+</blockquote>
+<p><img src="http://developer.telerik.com/wp-content/uploads/2016/05/command_line_api_header.jpg" alt="图片 文章参考截图"></p>
+<p>很多年以前，调试一段JavaScript代码几乎全部依赖于<code>console.log()</code>来调用正在研究中的一个或多个函数。有时你已经意识到，问题不是在这些功能而是在一个由他们调用的函数中，从而更加使得<code>console.log()</code>的调用将被添加到代码中。这通常也会伴随着相当多的脏话（吐槽？抱怨？）。</p>
+<a id="more"></a>
+<p>这种方法的问题是它降低了研究的效率。如果你正在执行一个严重的调试会话来找到一个bug的根源，那么在工作中调用<code>console.log()</code>并不是正确的工具。另外，有时遗留在代码中的脏话可能会导致一些尴尬的情况。</p>
+<p>如今，大多数开发者都很好的意识到在所有主流浏览器的集成开发工具所提供的强大功能。它们提供检查DOM元素的能力，动态的添加和删除<code>class</code>，改变一个属性的值，在一个或多个元素上添加事件监听器以及更多。除了这些功能，开发者工具还支持命令行API。</p>
+<p>在这篇文章中，我将向你们介绍命令行API所提供的的主要特点以及解释说明它们的使用案例。</p>
+<h2 id="介绍命令行API"><a href="#介绍命令行API" class="headerlink" title="介绍命令行API"></a>介绍命令行API</h2><p>命令行API为执行公共的任务提供了一组功能如选择和检查DOM元素，监控事件监听器，以及停止和启动系统分析器（直译：事件探查器）。它们其中的一部分也能够通过开发者工具所提供的用户界面被启用，但是如果你使用用户界面你就不得不在开发者工具选项卡之间来回移动。通过使用命令行API，你可以无需离开“Console”这个选项卡而去执行所有的操作。</p>
+<p>让我们开始讨论这个我认为是最常见的任务：使用DOM选择一个或多个元素。</p>
+<h2 id="选择DOM元素"><a href="#选择DOM元素" class="headerlink" title="选择DOM元素"></a>选择DOM元素</h2><p>如果你喜欢jQuery，就像我一样，喜欢这个库的简单和简洁，因为它可以使用DOM来选择元素。例如，如果你想选择有一个<code>class</code>名为<strong>green</strong>的第一个<strong>span</strong>元素，你可以这样写：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&apos;span.green&apos;)[0]</div></pre></td></tr></table></figure>
+<p>在现代的浏览器中你可以用一个稍微冗长的语句实现相同的效果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">document.querySelector(&apos;span.green&apos;)</div></pre></td></tr></table></figure>
+<p>命令行API提供了一个叫作<strong>$</strong>的方法，它是<code>document.querySelector</code>的一个别名，用jQuery的简洁语法来执行相同的任务。因此，不像jQuery，你甚至不需要追加[0]去访问第一个元素，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&apos;span.green&apos;)</div></pre></td></tr></table></figure>
+<h4 id="为-而战"><a href="#为-而战" class="headerlink" title="为$而战"></a>为$而战</h4><p>美元符号的选择已经给一些开发者造成了困惑。实际上，如果你正在开发的页面上使用开发者工具为美元符号定义的值（就像jQuery那样），命令行API的<strong>$</strong>别名是不可用的。以类似的方式，如果网页使用任何命令行API暴露提供的别名，那么相关的功能也将不可用。这也就意味着如果你在控制台使用<strong>$</strong>符，它可能不会立即显示$的值（<code>document.querySelector</code>定义的别名为jQuery，或者网页的作者定义的其他的别名）。</p>
+<p>在一些浏览器中，如Opera和Chrome，通过查看在控制台打印的值来避免困惑是有可能的。所以，在控制台写<strong>$</strong>并且按下<strong>ENTER</strong>键。如果你看到下面的输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function $(selector, [startNode]) &#123; [Command Line API] &#125;</div></pre></td></tr></table></figure>
+<p>你将会知道你正在处理的命令行API的别名。不幸的是，IE11及以下版本不会给出这么nice的输出结果，因此很难理解你正在做（处理解决）什么。</p>
+<h4 id="选择多个元素"><a href="#选择多个元素" class="headerlink" title="选择多个元素"></a>选择多个元素</h4><p>以同样的方式，你可以从DOM中使用<strong>$</strong>别名选择一个单一的元素，命令行API为<code>document.queryselectorall</code>定义了一个别名命名为<strong>$$</strong>。它可以让你选择所有的匹配所提供的选择器的DOM元素。</p>
+<p>因此，当你在控制台中，可以通过如下写法就可以选择所有页面上的段落：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$$(&apos;p&apos;)</div></pre></td></tr></table></figure>
+<p>选择一个或多个元素并不令人感到多么兴奋，除非你用他们做一些事情。你可能需要改变一个属性的值，删除一个<code>class</code>，更改内容，或者甚至在DOM树内部移动元素。为了实现这些目标，你必须在它们的上下文环境中检查这些元素。让我们来了解如何去做。</p>
+<h2 id="检查DOM元素"><a href="#检查DOM元素" class="headerlink" title="检查DOM元素"></a>检查DOM元素</h2><p>一旦你已经选择了一个元素，你可能想要去检查它。命令行API提供了一个叫作<strong>inspect</strong>的方法，它将在开发者工具的“Elements”选项中直接带你到特定的元素。比方说你想去搜索并监测页面中第一个有<code>class</code>为<strong>green</strong>的<strong>sapn</strong>元素。达到那样的效果你可以这样写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">inspect($(&apos;span.green&apos;))</div></pre></td></tr></table></figure>
+<p>一旦你已经开始通过修改一些元素来玩DOM树，你可能想要去复用它们去执行更多的变化。命令行API提供了一个快速的方法去访问到最后选中的元素，我们将在下一节分析它。</p>
+<h4 id="引用监测的最后一个元素"><a href="#引用监测的最后一个元素" class="headerlink" title="引用监测的最后一个元素"></a>引用监测的最后一个元素</h4><p>命令行API提供的<strong>$0</strong>, <strong>$1</strong>, <strong>$2</strong>, <strong>$3</strong>和<strong>$4</strong>快捷键是指在“Elements”面板内监测的最后五个DOM元素。<strong>$0</strong>命令是指最近选择的元素，<strong>$1</strong>返回第二最近选择的那个等等。如果你是正在操作在“Profiles”这个面板中而不是“Elements”这个选项中的话，这些相同的命令也能够被用来指选中的最后五个JavaScript堆对象。</p>
+<h2 id="调试事件"><a href="#调试事件" class="headerlink" title="调试事件"></a>调试事件</h2><p>如果你在客户端用JavaScript做了一些工作，那么你一定使用了事件。在这一章节中，我将概述可调试事件监听器的方法。</p>
+<h4 id="检索绑定到一个元素上的事件侦听器"><a href="#检索绑定到一个元素上的事件侦听器" class="headerlink" title="检索绑定到一个元素上的事件侦听器"></a>检索绑定到一个元素上的事件侦听器</h4><p>DOM API提供了<strong>addEventListener()</strong>和<strong>removeEventListener()</strong>方法来分别添加或者删除事件监听器。不幸的是，DOM API并不提供一种检索已经添加了事件监听器的方法，因此你必须自己去跟踪它们。命令行API实现了叫作<strong>getEventListeners()</strong>的这样一个方法。记住，像这个API的其他所有功能，这个方法只有在控制台是可用的。</p>
+<p><strong>getEventListeners()</strong>接受你想作为其唯一的参数监测DOM元素（如<strong>window</strong>或者表达式<code>$(&#39;span.green&#39;)</code>的结果）。返回值是一个键为绑定事件类型名称的对象，比如“click”和“keydown”，以及值为包含为每个注册的事件监听器项目的数组。这些项目在每个数组中是描述注册了监听器的对象。</p>
+<p>前面的描述可能有点混乱，所以让我们讨论一个例子。思考下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">window.addEventListener(&apos;load&apos;, function() &#123;</div><div class="line">   console.log(&apos;loaded&apos;);</div><div class="line">&#125;);</div><div class="line">window.addEventListener(&apos;resize&apos;, function() &#123;</div><div class="line">   console.log(&apos;resized 1 &apos;);</div><div class="line">&#125;);</div><div class="line">window.addEventListener(&apos;resize&apos;, function() &#123;</div><div class="line">   console.log(&apos;resized 2&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>如果你打开开发者工具“Console”选项并执行<strong>getEventListeners(window)</strong>，你将得到如下结果：</p>
+<p><img src="http://developer.telerik.com/wp-content/uploads/2016/05/getEventListeners.jpg" alt="图片 控制台输出结果图"></p>
+<h4 id="监控事件监听器的执行"><a href="#监控事件监听器的执行" class="headerlink" title="监控事件监听器的执行"></a>监控事件监听器的执行</h4><p>有时你需要知道当一个给定的事件监听器的执行和监测传入的事件对象。在这种情况下你可以使用<strong>monitorEvents()</strong>方法。它接收两个参数，第一个参数是事件绑定对象或是相关事件的对象。第二个参数是一个指定事件名称的字符串（如“click”），一个事件集合的数组，或者是如下图所示的一个映射到预定义事件集合中的普通事件类型：</p>
+<p><img src="http://10.168.0.151/mayue/images/eventpic.jpg" alt="图片 事件"></p>
+<p>当一个指定的事件发生在指定的对象上，事件对象被传递给函数将被记录到控制台中。</p>
+<p>考虑到前面的例子，你可以使用<strong>monitorevents()</strong>方法如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">monitorEvents(window, &apos;load&apos;)</div><div class="line">monitorEvents(window, [&apos;load&apos;, &apos;resize&apos;])</div><div class="line">monitorEvents(window, &apos;control&apos;)</div><div class="line">`</div></pre></td></tr></table></figure>
+<p>请注意，<strong>monitorevents()</strong>对自定义事件不起作用。</p>
+<p>API还有一个叫作<strong>unmonitorEvents()</strong>停止监测事件的方法。它接受一个或两个参数，他们的类型和意义和<strong>monitorEvents()</strong>方法是一样的。如果只提供第一个参数对象，该对象将被停止。所有对象的事件将被停止监测；否则，只有指定的事件将停止被监测。</p>
+<h2 id="检测及监控功能和方法"><a href="#检测及监控功能和方法" class="headerlink" title="检测及监控功能和方法"></a>检测及监控功能和方法</h2><p>去了解是什么导致了项目中的bug，你往往需要去建立和移除断点去监测方法被调用以及有哪个参数。本节将教你如何直接在控制台来达到这些目标。</p>
+<h4 id="设置和移除断点"><a href="#设置和移除断点" class="headerlink" title="设置和移除断点"></a>设置和移除断点</h4><p>通过UI界面设置和移除断点会变的无趣，因为你必须在开发者工具中切换tab选项去找到你想调试的功能。幸运的是，命令行API已经用<strong>debug()</strong>方法覆盖了此功能。它只接受一个参数用来调试你想调试的函数和方法。</p>
+<p>一些实例调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// Set a breakpoint at the beginning of the sumNumbers function</div><div class="line">debug(sumNumbers)</div><div class="line"></div><div class="line">// Set a breakpoint at the beginning of the autoInit</div><div class="line">// method of the Sticky object</div><div class="line">debug(Sticky.autoInit)</div></pre></td></tr></table></figure>
+<p>一旦你调用debug()在一个函数或方法上，每次执行调试器将都会被打开。一旦你完成了你的调试，你可以通过<strong>undebug()</strong>方法在同一个函数或方法上来移除断点。</p>
+<h4 id="监控功能和方法"><a href="#监控功能和方法" class="headerlink" title="监控功能和方法"></a>监控功能和方法</h4><p>有时一个断点并不完全是你想要的。比如，在一个短期内多次被调用的函数中你可能仅仅想知道当函数执行时参数是什么。对于这样的场景，你可以使用<strong>monitor()</strong>。</p>
+<p>让我们讨论一个例子来搞清楚这个函数的功能。我们说在你的项目中有一个叫作<strong>sum()</strong>的方法用来计算提供的参数。为了使它更灵活，该函数接受一个数字的数组或很多数字的变量。该函数可以定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function sum(numbers) &#123;</div><div class="line">   if (!(numbers instanceof Array)) &#123;</div><div class="line">      numbers = [].slice.call(arguments);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   return numbers.reduce(function(prev, curr) &#123;</div><div class="line">      return prev + curr;</div><div class="line">   &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>打开”Console”选项并执行<strong>monitor(sum)</strong>方法，然后执行下面的语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(sum(1, 2, 3));</div><div class="line">console.log(sum([4, 5, 6]));</div></pre></td></tr></table></figure>
+<p>开发者工具应该给你如下两个消息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">function sum called with arguments: 1, 2, 3</div><div class="line">function sum called with arguments: 4,5,6</div></pre></td></tr></table></figure>
+<p>一旦你完成了你的研究，你可以通过调用<strong>unmonitor()</strong>来停止监控功能。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>在这篇文章中我已经描述了命令行API最重要的功能。它提供了一些额外的功能和快捷方法用来可以提高你的调试工作。如果你对剩下的其他工具感兴趣，这里有一些有用的资源：</p>
+<ul>
+<li><a href="https://getfirebug.com/wiki/index.php/Command_Line_API" target="_blank" rel="external">Firebug’s page on the Command Line API</a></li>
+<li><a href="https://developers.google.com/web/tools/chrome-devtools/debug/command-line/command-line-reference" target="_blank" rel="external">Google Chrome’s page on the Command Line API</a></li>
+<li><a href="https://developer.apple.com/library/mac/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Console/Console.html" target="_blank" rel="external">Safari’s page on the Command Line API</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="马跃Marico WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="马跃Marico Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/开发调试/" rel="tag">#开发调试</a>
+          
+            <a href="/tags/控制台命令行API/" rel="tag">#控制台命令行API</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/02/给所有的Web应用程序添加离线支持/" rel="prev" title="给所有的Web应用程序添加离线支持">
+                给所有的Web应用程序添加离线支持 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/26/使用命令行api更轻易得调试web应用/"
+     data-title="使用命令行API更轻易得调试Web应用"
+     data-content=""
+     data-url="http://yoursite.com/2016/07/26/使用命令行api更轻易得调试web应用/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/26/使用命令行api更轻易得调试web应用/"
+           data-title="使用命令行API更轻易得调试Web应用" data-url="http://yoursite.com/2016/07/26/使用命令行api更轻易得调试web应用/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="马跃Marico" />
+          <p class="site-author-name" itemprop="name">马跃Marico</p>
+          <p class="site-description motion-element" itemprop="description">Front-End Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mayue2015" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/5566587/marico" target="_blank" title="Stack Overflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Stack Overflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2089711385?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/MaYueMarico" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍命令行API"><span class="nav-number">1.</span> <span class="nav-text">介绍命令行API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择DOM元素"><span class="nav-number">2.</span> <span class="nav-text">选择DOM元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为-而战"><span class="nav-number">2.0.1.</span> <span class="nav-text">为$而战</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择多个元素"><span class="nav-number">2.0.2.</span> <span class="nav-text">选择多个元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查DOM元素"><span class="nav-number">3.</span> <span class="nav-text">检查DOM元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引用监测的最后一个元素"><span class="nav-number">3.0.1.</span> <span class="nav-text">引用监测的最后一个元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调试事件"><span class="nav-number">4.</span> <span class="nav-text">调试事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#检索绑定到一个元素上的事件侦听器"><span class="nav-number">4.0.1.</span> <span class="nav-text">检索绑定到一个元素上的事件侦听器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#监控事件监听器的执行"><span class="nav-number">4.0.2.</span> <span class="nav-text">监控事件监听器的执行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检测及监控功能和方法"><span class="nav-number">5.</span> <span class="nav-text">检测及监控功能和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置和移除断点"><span class="nav-number">5.0.1.</span> <span class="nav-text">设置和移除断点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#监控功能和方法"><span class="nav-number">5.0.2.</span> <span class="nav-text">监控功能和方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">6.</span> <span class="nav-text">结论</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">马跃Marico</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"marico-mayue"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

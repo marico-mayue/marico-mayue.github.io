@@ -95,7 +95,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/images/avatar.png?v=5.0.1" />
 
 
 
@@ -239,9 +239,39 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '我的博客笔记','2.0.0');
+</script>
+
+
+
+    </div>
   
 </nav>
 
@@ -254,6 +284,527 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/02/vue-router2基础＋实践/" itemprop="url">
+                  vue-router2基础＋实践
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-02T00:00:00+08:00" content="2017-03-02">
+              2017-03-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web开发/" itemprop="url" rel="index">
+                    <span itemprop="name">web开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/02/vue-router2基础＋实践/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/02/vue-router2基础＋实践/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="http://oe3sqmqy4.bkt.clouddn.com/maxresdefault.jpg" alt=""></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Vue.js的一大特色就是构建单页面应用十分方便，vue-router是Vue.js官方的路由插件，它和vue.js是深度集成的，适合用于构建单页面应用。vue的单页面应用是基于路由和组件的，路由用于设定访问路径，并将路径和组件映射起来。传统的页面应用，是用一些超链接来实现页面切换和跳转的。在vue-router单页面应用中，则是路径之间的切换，也就是组件的切换。既然要方便构建单页面应用那么自然少不了路由，vue-router就是vue官方提供的一个路由框架。</p>
+<h3 id="路由的安装"><a href="#路由的安装" class="headerlink" title="路由的安装"></a>路由的安装</h3><h4 id="npm安装"><a href="#npm安装" class="headerlink" title="npm安装"></a>npm安装</h4><p>可以使用npm直接安装插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install vue-router --save</div></pre></td></tr></table></figure>
+<p>执行命令完成vue-router的安装，并在package.json中添加了vue-router的依赖。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&quot;dependencies&quot;: &#123;</div><div class="line">   ...</div><div class="line">   &quot;vue-router&quot;: &quot;^2.1.0&quot;</div><div class="line">   ...</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>如果是要安装在开发环境下，则使用以下命令行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install vue-router --save-dev</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&quot;devDependencies&quot;: &#123;</div><div class="line">  ...</div><div class="line">  &quot;vue-router&quot;: &quot;^2.1.0&quot;,</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="直接下载-CDN"><a href="#直接下载-CDN" class="headerlink" title="直接下载/CDN"></a>直接下载/CDN</h4><p><a href="https://unpkg.com/vue-router/dist/vue-router.js">https://unpkg.com/vue-router/dist/vue-router.js</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;/path/to/vue.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;/path/to/vue-router.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/02/vue-router2基础＋实践/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/10/微信小程序开发实践总结/" itemprop="url">
+                  微信小程序开发实践总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-10T00:00:00+08:00" content="2017-01-10">
+              2017-01-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/微信小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/10/微信小程序开发实践总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/10/微信小程序开发实践总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="http://oe3sqmqy4.bkt.clouddn.com/201701051003042966.png" alt=""></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>近日，小程序如约而至在1月9日凌晨在微信IOS和Android最新6.5.3版本中上线了期待已久的微信小程序，用户只需要更新最新版微信并搜索自己感兴趣的就能够体验已发布的小程序了。本人有幸和另一位团队的小伙伴也一起参与了公司车管家小程序的开发，我们前端这边的开发整体进度都还算顺利没有遇到特别坑的地方，当然这里离不开小伙伴雪娇童鞋她们在这之前做了很多产品和技术上的调研以及做了Demo的实践还有分享等等工作，都确保了我们开发上没有遇到大的阻碍。现将我从小程序的学习到开发到测试的过程中遇到的问题和踩的一些坑做一个小总结。</p>
+<h3 id="关于整体的开发模式"><a href="#关于整体的开发模式" class="headerlink" title="关于整体的开发模式"></a>关于整体的开发模式</h3><p>小程序不像我们前端er日常开发web和H5那样在任意一个文本编辑器里编写代码在浏览器中就能实时看到页面还有本地和对外访问的链接地址，小程序是没有这些的（后面有牛人开发并开源了<strong>WEPT</strong>,集成了微信小程序组件UI可以在浏览器中查看调试）。微信为开发小程序应用提供了<strong>web开发者工具</strong>供开发者使用（实际开发中这工具开发体验真是low到可以了），建议大家实际开发时依旧使用自己的IDE，用<strong>WEPT</strong>或者<strong>web开发者工具</strong>查看页面。从小程序的开发语言中我们可以看到一些<code>React</code>、<code>Angular</code>以及<code>Vue</code>的影子，也许小程序就是集大成了这三大目前最主流的前端框架（?问号脸），因此只要开发者之前有这三种框架的开发经验再认真阅读阅读小程序的API文档，那么小程序的学习成本和上手开发成本都不是很高。它的模式很闭环很严格限制，只要按照最新的官方文档去规范开发，开发完成利用开发者工具平台打包压缩上传至微信服务器，然后微信进行审核，审核通过后会发布上线，用户在客户端搜索小程序名称获取并离线缓存至微信本地文件系统，供用户离线浏览访问。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/10/微信小程序开发实践总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/10/使用Service workers实现离线内容/" itemprop="url">
+                  使用Service workers实现离线内容
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-10T00:00:00+08:00" content="2016-11-10">
+              2016-11-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端技术/" itemprop="url" rel="index">
+                    <span itemprop="name">前端技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/10/使用Service workers实现离线内容/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/10/使用Service workers实现离线内容/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>原文地址：<a href="https://madebymike.com.au//writing/service-workers/">Offline content with service workers</a></p>
+</blockquote>
+<p>Service workers不只是对网页进行离线支持它还可以做很多事情，但是包括我自己在内对于大多数人而言，这将是他们的第一次使用Service workers经验。我最近给我的博客实现了一个简单的离线页面，令我惊喜的是使用它竟然是如此的简单。（充满着十足的自信）我想我可以做更多的事情。我决定开始保存我的博客文章从而实现离线阅读，并且很快开始投入实践。之后我很快意识到这个“坑”很深。</p>
+<p>这并不是在责怪service workers，而这是一个迹象，说明它们是多么的强大和灵活。还好发现的及时，随着概念变得越来越熟悉，以及复杂性逐渐被抽象化，离线内容将变得更加常见。事实上，我喝了Kool-Aid(译者注：一种饮料)，并且我可以知道为什么很多人认为，在几年内离线内容将像如今在web开发中的响应式设计一样变的无处不在。</p>
+<p>话虽如此，但是在开始之前这里有一些事情我希望我是知道的。</p>
+<h3 id="浏览器支持缓存"><a href="#浏览器支持缓存" class="headerlink" title="浏览器支持缓存"></a>浏览器支持缓存</h3><p>Service workers表面上看是一个渐进增强的简单备选方案，在注册一个service worker之前检测它的支持性是很简单的。你可以像这样去做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (&apos;serviceWorker&apos; in navigator) &#123;</div><div class="line">  // Yay, service workers work!</div><div class="line">  navigator.serviceWorker.register(&apos;/sw.js&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看上去似乎足够简单，但是这里有一个问题。如果你看过了<a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">MDN page for the service worker cache API</a>，你将会了解到不同版本的Chrome浏览器支持不同的缓存方法。这也就意味着，尽管你认真努力的做了功能的支持性检测，当使用<code>addAll</code>方法的时候介于版本为40和45之间的Chrome将会出现一个错误。当这些版本的浏览器被更加广泛的使用的时候这就是一个问题了。我在写这篇文章的时候已经在<a href="http://caniuse.com/usage-table">Can I Use</a>检测过了，看上去它可能会影响到约1.15%的用户。</p>
+<p>在开始service workers之前我已经读了几篇相关的博客和教程。一些人主张仅仅是使用<code>put</code>而不是<code>addAll</code>，其他人则推荐使用<a href="https://github.com/dominiccooney/cache-polyfill">cache pollyfill</a>，尽管其他一些人还仍然没有提到它。明显的这些都是在不同的时间段写的，并且为了找出正确的方式我花费了很多的时间去研究它。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/10/使用Service workers实现离线内容/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/31/构建跨平台Electron应用4个必知的小技巧/" itemprop="url">
+                  构建跨平台Electron应用4个必知的小技巧
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-31T00:00:00+08:00" content="2016-10-31">
+              2016-10-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端技术/" itemprop="url" rel="index">
+                    <span itemprop="name">前端技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/31/构建跨平台Electron应用4个必知的小技巧/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/31/构建跨平台Electron应用4个必知的小技巧/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>原文地址：<a href="https://blog.avocode.com/blog/4-must-know-tips-for-building-cross-platform-electron-apps">4 must-know tips for building cross platform Electron apps</a></p>
+</blockquote>
+<p><img src="http://oe3sqmqy4.bkt.clouddn.com/22dc7f3e89b76e7b581c.png" alt=""></p>
+<p>在其他众多的应用中，<a href="https://electron.atom.io/">Electron</a>技术驱动着Avocode（译者注：一款设计师和开发者的合作工具），Electron可以让你构建一个运行非常快速流畅的跨平台桌面应用。</p>
+<blockquote>
+<p>If you don’t pay attention you will quickly end up in the uncanny valley of apps, though. Apps that don’t feel quite in place among your other apps.（如果有些问题不注意的话，你的App很快就会掉到“坑”里，无法从其它众多App中脱颖而出。）</p>
+</blockquote>
+<p>这是2016年5月在阿姆斯特丹的<strong>Electron Meetup</strong>上我做的发言的整理稿内容，由于要考虑到API的变化所以这里做了一些更新。值得注意的是，我这里会做一些更加详细的叙述，并且假设你们对Electron有了一些了解。</p>
+<h4 id="首先，我是谁？"><a href="#首先，我是谁？" class="headerlink" title="首先，我是谁？"></a>首先，我是谁？</h4><p>我是Kilian Valkhof，一个前端开发者、交互设计师、app开发者，当然这取决于你问的对象是谁了。我有超过10年的互联网从业经验，并且在各式各样的环境下开发出很多的桌面应用，比如<strong>GTK</strong>和<strong>Qt</strong>，当然了它们都是使用的Electron。</p>
+<p>我最近开发的应用是<a href="https://fromscratch.rocks/">Fromscratch</a>，它是一款跨平台免费的带有自动保存功能的记笔记应用。</p>
+<p>在开发Fromscratch期间，我花了大量时间去确保这款应用在所有三大平台上都能保持良好的运行且可以感觉到体验很棒，并找出了可以用Electron来实现它的方法。这些都是我挖坑填坑过程中积累起来的。</p>
+<p>让一款使用Electron开发的应用体验起来很好并且很稳定并不难，而你仅仅需要去确定你关注到的是它的细节。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/31/构建跨平台Electron应用4个必知的小技巧/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -381,6 +932,261 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/02/给所有的Web应用程序添加离线支持/" itemprop="url">
+                  给所有的Web应用程序添加离线支持
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-02T00:00:00+08:00" content="2016-09-02">
+              2016-09-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端技术/" itemprop="url" rel="index">
+                    <span itemprop="name">前端技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/02/给所有的Web应用程序添加离线支持/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/02/给所有的Web应用程序添加离线支持/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>原文地址：<a href="https://medium.com/google-developer-experts/add-offline-support-to-any-web-app-c20edc4bea0e#.wn48rpi75">Add offline support to any Web app</a></p>
+</blockquote>
+<p>最近，我参加了<a href="https://www.angularattack.com/">Angular Attack 2016 Hackathon</a>编程马拉松活动，并且开发出了一款叫做“<a href="https://www.angularattack.com/entries/101-angularlabs-london">Let Me See</a>”的应用，它可以帮助那些失明的人们看到世界（PS：瞬间感觉很伟大的样子…）。这款应用通过使用<a href="http://blog.ionic.io/built-with-ionic-2-let-me-see/">Ionic2</a>（当然也有<a href="https://angular.io/">Angular2</a>）开发而成。最重要的是我想要让这款应用是更加进步更加优秀的，所以为了得到一个更好的及时加载体验，我给它添加了支持离线缓存的功能。那么下面就让我告诉你们我是如何简单又快速地添加这项功能的。</p>
+<blockquote>
+<p>Oh! By the way, “Let Me See” has won the Innovation prize!（哦!对了，“Let Me See”已经荣获了创新奖！）</p>
+</blockquote>
+<p>在我们开始之前，我要假设你们已经有了一个现有的Web app应用了（PS：哈哈，够强势）。接下来我将用“Let Me See”作为例子一起来进行以下的步骤操作，并且这些步骤将适用于任何现代的单页面应用。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/02/给所有的Web应用程序添加离线支持/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/26/使用命令行api更轻易得调试web应用/" itemprop="url">
+                  使用命令行API更轻易得调试Web应用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-26T00:00:00+08:00" content="2016-07-26">
+              2016-07-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端技术/" itemprop="url" rel="index">
+                    <span itemprop="name">前端技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/26/使用命令行api更轻易得调试web应用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/26/使用命令行api更轻易得调试web应用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>原文链接：<a href="http://developer.telerik.com/content-types/tutorials/easier-web-application-debugging-command-line-api/">http://developer.telerik.com/content-types/tutorials/easier-web-application-debugging-command-line-api/</a></p>
+</blockquote>
+<p><img src="http://developer.telerik.com/wp-content/uploads/2016/05/command_line_api_header.jpg" alt="图片 文章参考截图"></p>
+<p>很多年以前，调试一段JavaScript代码几乎全部依赖于<code>console.log()</code>来调用正在研究中的一个或多个函数。有时你已经意识到，问题不是在这些功能而是在一个由他们调用的函数中，从而更加使得<code>console.log()</code>的调用将被添加到代码中。这通常也会伴随着相当多的脏话（吐槽？抱怨？）。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/26/使用命令行api更轻易得调试web应用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -422,7 +1228,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -430,7 +1236,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -439,7 +1245,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -513,8 +1319,8 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

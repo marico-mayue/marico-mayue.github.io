@@ -1,0 +1,837 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="web app,Ionic,npm,gulp,service worker," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/avatar.png?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="原文地址：Add offline support to any Web app
+
+最近，我参加了Angular Attack 2016 Hackathon编程马拉松活动，并且开发出了一款叫做“Let Me See”的应用，它可以帮助那些失明的人们看到世界（PS：瞬间感觉很伟大的样子…）。这款应用通过使用Ionic2（当然也有Angular2）开发而成。最重要的是我想要让这款应用是更加进步更加优秀">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给所有的Web应用程序添加离线支持">
+<meta property="og:url" content="http://yoursite.com/2016/09/02/给所有的Web应用程序添加离线支持/index.html">
+<meta property="og:site_name" content="MaYue's Notes">
+<meta property="og:description" content="原文地址：Add offline support to any Web app
+
+最近，我参加了Angular Attack 2016 Hackathon编程马拉松活动，并且开发出了一款叫做“Let Me See”的应用，它可以帮助那些失明的人们看到世界（PS：瞬间感觉很伟大的样子…）。这款应用通过使用Ionic2（当然也有Angular2）开发而成。最重要的是我想要让这款应用是更加进步更加优秀">
+<meta property="og:image" content="http://10.168.0.151/mayue/images/1-iIma-I9umOw49SNTkjRqzA.png">
+<meta property="og:updated_time" content="2017-03-17T02:27:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="给所有的Web应用程序添加离线支持">
+<meta name="twitter:description" content="原文地址：Add offline support to any Web app
+
+最近，我参加了Angular Attack 2016 Hackathon编程马拉松活动，并且开发出了一款叫做“Let Me See”的应用，它可以帮助那些失明的人们看到世界（PS：瞬间感觉很伟大的样子…）。这款应用通过使用Ionic2（当然也有Angular2）开发而成。最重要的是我想要让这款应用是更加进步更加优秀">
+<meta name="twitter:image" content="http://10.168.0.151/mayue/images/1-iIma-I9umOw49SNTkjRqzA.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/02/给所有的Web应用程序添加离线支持/"/>
+
+  <title> 给所有的Web应用程序添加离线支持 | MaYue's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MaYue's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '我的博客笔记','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                给所有的Web应用程序添加离线支持
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-02T00:00:00+08:00" content="2016-09-02">
+              2016-09-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端技术/" itemprop="url" rel="index">
+                    <span itemprop="name">前端技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/02/给所有的Web应用程序添加离线支持/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/02/给所有的Web应用程序添加离线支持/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>原文地址：<a href="https://medium.com/google-developer-experts/add-offline-support-to-any-web-app-c20edc4bea0e#.wn48rpi75" target="_blank" rel="external">Add offline support to any Web app</a></p>
+</blockquote>
+<p>最近，我参加了<a href="https://www.angularattack.com/" target="_blank" rel="external">Angular Attack 2016 Hackathon</a>编程马拉松活动，并且开发出了一款叫做“<a href="https://www.angularattack.com/entries/101-angularlabs-london" target="_blank" rel="external">Let Me See</a>”的应用，它可以帮助那些失明的人们看到世界（PS：瞬间感觉很伟大的样子…）。这款应用通过使用<a href="http://blog.ionic.io/built-with-ionic-2-let-me-see/" target="_blank" rel="external">Ionic2</a>（当然也有<a href="https://angular.io/" target="_blank" rel="external">Angular2</a>）开发而成。最重要的是我想要让这款应用是更加进步更加优秀的，所以为了得到一个更好的及时加载体验，我给它添加了支持离线缓存的功能。那么下面就让我告诉你们我是如何简单又快速地添加这项功能的。</p>
+<blockquote>
+<p>Oh! By the way, “Let Me See” has won the Innovation prize!（哦!对了，“Let Me See”已经荣获了创新奖！）</p>
+</blockquote>
+<p>在我们开始之前，我要假设你们已经有了一个现有的Web app应用了（PS：哈哈，够强势）。接下来我将用“Let Me See”作为例子一起来进行以下的步骤操作，并且这些步骤将适用于任何现代的单页面应用。</p>
+<a id="more"></a>
+<p>那就让我们开始吧，首先这里是我们的应用的一个结构截图：</p>
+<p><img src="http://10.168.0.151/mayue/images/1-iIma-I9umOw49SNTkjRqzA.png" alt=""></p>
+<p>你可以看到，由于应用<a href="https://letmesee.firebaseapp.com/" target="_blank" rel="external">托管</a>在Firebase上，这是一个有一些额外<a href="https://www.firebase.com/" target="_blank" rel="external">Firebase</a>配置文件的简单的<code>Ionic2</code>应用。</p>
+<p>你应该注意到的是这里有一个<code>sw-precache-config.json</code>的文件，这个文件使用到了<a href="https://github.com/GoogleChrome/sw-precache" target="_blank" rel="external">Service Worker Precache</a>（<strong>sw-precache</strong>）工具。</p>
+<blockquote>
+<p>Tl;Dr: The Service Worker Precache allows us to precache all necessary resources needed by the application shell. It also generates the server worker file for us, automagically!（Service Worker Precache允许我们通过应用的<code>shell</code>来预先缓存所有必要的资源，它还可以自动为我们生成服务器运行文件！）</p>
+</blockquote>
+<p>以下是<strong>sw-precache</strong>工具如何执行操作使其起作用的步骤。</p>
+<p>首先，你必须决定是否要让其作为一个<code>command line interface</code>（CLI）在全局去使用这个工具：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --global sw-precache</div></pre></td></tr></table></figure>
+<p>并且像这样去使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sw-precache --sw-file=&apos;www/sw.js&apos; \</div><div class="line">              --static-file-globs=&apos;www/**/*.html&apos;</div></pre></td></tr></table></figure>
+<p>或者加入到你的本地依赖管理中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev sw-precache</div></pre></td></tr></table></figure>
+<p>然后，我们需要提供一个<code>sw-precache-config.json</code>配置文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;swFile&quot;: &quot;www/sw.js&quot;,</div><div class="line">  &quot;staticFileGlobs&quot;: [</div><div class="line">    &quot;www/manifest.json&quot;,</div><div class="line">    &quot;www/**/*.css&quot;,</div><div class="line">    &quot;www/**/*.&#123;ttf,woff,woff2,eof&#125;&quot;,</div><div class="line">    &quot;www/**/*.js&quot;,</div><div class="line">    &quot;www/**/*.html&quot;,</div><div class="line">    &quot;www/**/*.&#123;png,jpg,gif,svg,mp3&#125;&quot;</div><div class="line">  ],</div><div class="line">  &quot;handleFetch&quot;: true,</div><div class="line">  &quot;stripPrefix&quot;: &quot;www/&quot;,</div><div class="line">  &quot;cacheId&quot;: &quot;let-me-see-v1&quot;,</div><div class="line">  &quot;maximumFileSizeToCacheInBytes&quot;: 4194304,</div><div class="line">  &quot;ignoreUrlParametersMatching&quot;: &quot;[/./]&quot;,</div><div class="line">  &quot;verbose&quot;: true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>让我来快速讲解下这其中的一些配置项的含义：</p>
+<ul>
+<li><p><strong>swFile</strong>：将生成<code>service worker</code>文件的路径（此配置项没有记录，请查看这个<a href="https://github.com/GoogleChrome/sw-precache/blob/master/cli.js#L36" target="_blank" rel="external">文件</a>）；</p>
+</li>
+<li><p><strong>staticFileGlobs</strong>：一个或多个字符串匹配模式的数组。匹配到的是将会被缓存和离线使用的文件；</p>
+</li>
+<li><p><strong>handleFetch</strong>：确定<code>fetch</code>事件处理程序是否包含在生成的<code>service worker</code>代码中；</p>
+</li>
+<li><p><strong>cacheId</strong>：用于区分缓存的字符串；</p>
+</li>
+<li><p><strong>maximumFileSizeToCacheInBytes</strong>：设置一个预缓存列表文件允许的最大值（<a href="https://github.com/GoogleChrome/sw-precache/pull/113" target="_blank" rel="external">点我看这里（调皮状..）</a>）；</p>
+</li>
+<li><p><strong>stripPrefix</strong>：在程序运行时从URL路径的开始处移除指定的字符串；</p>
+</li>
+</ul>
+<p>你可以在<a href="https://github.com/GoogleChrome/sw-precache#options-parameter" target="_blank" rel="external">github repository</a>阅读有关这些配置项的更详细的文档。</p>
+<p>既然我们已经有了安装好的<strong>sw-precache</strong>工具，接下来就需要让它在我们的app中运行起来。因为<code>Ionic2</code>使用<code>Gulp</code>作为它的一个构建系统所以我选择用<strong>sw-precache</strong>作为<code>Gulp</code>的一个任务。</p>
+<p>让我们用<code>Gulp</code>来创建我们的<code>sw</code>任务吧：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">gulp.task(&apos;sw&apos;, function(callback) &#123;</div><div class="line">  var path = require(&apos;path&apos;);</div><div class="line">  var swPrecache = require(&apos;sw-precache&apos;);</div><div class="line">  var rootDir = &apos;www&apos;;</div><div class="line">  var options = require(&apos;./sw-precache-config.json&apos;);</div><div class="line">  options.ignoreUrlParametersMatching = [/./];</div><div class="line">  swPrecache.write(path.join(rootDir, &apos;sw.js&apos;), options, callback);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>当构建完成后<strong>sw-precache</strong>工具能够生成<code>service worker</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//...</div><div class="line">gulp.task(&apos;build:after&apos;, [&apos;sw&apos;]);</div><div class="line">//...</div></pre></td></tr></table></figure>
+<p>当然我们也可以选择在<code>watch</code>任务期间运行<code>sw</code>任务，这就意味着每次你在你的应用中编辑文件后<code>service worker</code>将会自动生成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gulp.task(&apos;watch&apos;, [&apos;clean&apos;], function(done)&#123;</div><div class="line">  runSequence(</div><div class="line">    [&apos;sass&apos;, &apos;html&apos;, &apos;fonts&apos;, &apos;scripts&apos;],</div><div class="line">    &apos;sw&apos;,</div><div class="line">    function()&#123; //...</div></pre></td></tr></table></figure>
+<p>我也强烈建议你关掉<strong>handleFetch</strong>配置项，否则内容将会总是从<code>service worker</code>缓存中提供服务支持。</p>
+<p>就是这样了，你已经做完了！</p>
+<p>你现在为你的web应用添加了离线支持。你可以在<a href="https://github.com/manekinekko/angularattack2016/blob/master/www/sw.js" target="_blank" rel="external">here on github</a>看到“Let Me See”自动生成<code>service worker</code>完整的内容。</p>
+<p>最后很重要的是别忘了在你的<code>index.html</code>中注册<code>service worker</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (&apos;serviceWorker&apos; in navigator) &#123;</div><div class="line">  navigator.serviceWorker.register(&apos;sw.js&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="马跃Marico WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="马跃Marico Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web-app/" rel="tag">#web app</a>
+          
+            <a href="/tags/Ionic/" rel="tag">#Ionic</a>
+          
+            <a href="/tags/npm/" rel="tag">#npm</a>
+          
+            <a href="/tags/gulp/" rel="tag">#gulp</a>
+          
+            <a href="/tags/service-worker/" rel="tag">#service worker</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/26/使用命令行api更轻易得调试web应用/" rel="next" title="使用命令行API更轻易得调试Web应用">
+                <i class="fa fa-chevron-left"></i> 使用命令行API更轻易得调试Web应用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/27/优惠券活动模版功能开发之填坑小结/" rel="prev" title="优惠券活动模版功能开发之填坑小结">
+                优惠券活动模版功能开发之填坑小结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/09/02/给所有的Web应用程序添加离线支持/"
+     data-title="给所有的Web应用程序添加离线支持"
+     data-content=""
+     data-url="http://yoursite.com/2016/09/02/给所有的Web应用程序添加离线支持/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/02/给所有的Web应用程序添加离线支持/"
+           data-title="给所有的Web应用程序添加离线支持" data-url="http://yoursite.com/2016/09/02/给所有的Web应用程序添加离线支持/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="马跃Marico" />
+          <p class="site-author-name" itemprop="name">马跃Marico</p>
+          <p class="site-description motion-element" itemprop="description">Front-End Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mayue2015" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/5566587/marico" target="_blank" title="Stack Overflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Stack Overflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2089711385?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/MaYueMarico" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">马跃Marico</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"marico-mayue"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
