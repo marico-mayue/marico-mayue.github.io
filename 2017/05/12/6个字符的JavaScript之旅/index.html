@@ -1,0 +1,838 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="JavaScript,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/avatar.png?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="原文地址：http://www.jazcash.com/a-javascript-journey-with-only-six-characters  JavaScript是一门奇妙而且有趣的语言，它可以让我们写一些疯狂但仍然有效合理的代码，它试图通过把事情转换到基于我们如何对待他们的特定类型上来帮助我们。 如果我们添加一个字符串，它会假定我们希望是文本形式表示，所以它将为我们转换成一个字符串。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6个字符的JavaScript之旅">
+<meta property="og:url" content="http://yoursite.com/2017/05/12/6个字符的JavaScript之旅/index.html">
+<meta property="og:site_name" content="MaYue&#39;s Notes">
+<meta property="og:description" content="原文地址：http://www.jazcash.com/a-javascript-journey-with-only-six-characters  JavaScript是一门奇妙而且有趣的语言，它可以让我们写一些疯狂但仍然有效合理的代码，它试图通过把事情转换到基于我们如何对待他们的特定类型上来帮助我们。 如果我们添加一个字符串，它会假定我们希望是文本形式表示，所以它将为我们转换成一个字符串。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/sdasda.png">
+<meta property="og:updated_time" content="2017-05-12T02:38:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="6个字符的JavaScript之旅">
+<meta name="twitter:description" content="原文地址：http://www.jazcash.com/a-javascript-journey-with-only-six-characters  JavaScript是一门奇妙而且有趣的语言，它可以让我们写一些疯狂但仍然有效合理的代码，它试图通过把事情转换到基于我们如何对待他们的特定类型上来帮助我们。 如果我们添加一个字符串，它会假定我们希望是文本形式表示，所以它将为我们转换成一个字符串。">
+<meta name="twitter:image" content="http://oe3sqmqy4.bkt.clouddn.com/sdasda.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/12/6个字符的JavaScript之旅/">
+
+  <title> 6个字符的JavaScript之旅 | MaYue's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MaYue's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input">
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '我的博客笔记','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                6个字符的JavaScript之旅
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-12T00:00:00+08:00" content="2017-05-12">
+              2017-05-12
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web开发/" itemprop="url" rel="index">
+                    <span itemprop="name">web开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/12/6个字符的JavaScript之旅/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/12/6个字符的JavaScript之旅/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oe3sqmqy4.bkt.clouddn.com/sdasda.png" alt></p>
+<blockquote>
+<p>原文地址：<a href="http://www.jazcash.com/a-javascript-journey-with-only-six-characters" target="_blank" rel="noopener">http://www.jazcash.com/a-javascript-journey-with-only-six-characters</a></p>
+</blockquote>
+<p>JavaScript是一门奇妙而且有趣的语言，它可以让我们写一些疯狂但仍然有效合理的代码，它试图通过把事情转换到基于我们如何对待他们的特定类型上来帮助我们。</p>
+<p>如果我们添加一个字符串，它会假定我们希望是文本形式表示，所以它将为我们转换成一个字符串。</p>
+<p>如果我们添加一个加号或者是减号前缀，它会假定我们希望是数值形式呈现，如果可能的话那么就会为我们把一个字符串转换成数字。</p>
+<p>如果我们添加一个否定符号，它会将字符串转换为一个布尔值。</p>
+<p>我们可以用Javascript中的<code>[</code>，<code>]</code>，<code>(</code>，<code>)</code>，<code>!</code> and<code>+</code>这六个符号写一些神奇的代码。</p>
+<p>如果你现在不是在移动设备上，你可以打开你浏览器的JS控制台跟着下面的步骤一起操作，你可以将任何示例代码拷贝粘贴到JS控制台，并且代码值应该都为true。</p>
+<p>让我们从最基础的开始，记住一些黄金规则:</p>
+<ol>
+<li><p>前面加<code>!</code>会被转换成布尔值</p>
+</li>
+<li><p>前面加<code>+</code>会被转换成数值</p>
+</li>
+<li><p>添加<code>[]</code>会被转换成字符串</p>
+</li>
+</ol>
+<p>这里他们是相等的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">![] === false</span><br><span class="line"></span><br><span class="line">+[] === 0</span><br><span class="line"></span><br><span class="line">[]+[] === &quot;&quot;</span><br></pre></td></tr></table></figure>
+<p>另一件事你应该知道的是,它可以从字符串使用方括号检索特定的字母：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;hello&quot;[0] === &quot;h&quot;</span><br></pre></td></tr></table></figure>
+<p>还可以使多个数字通过添加字符串表示在一起,然后把整个表达式转换成一个数字：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+(&quot;1&quot; + &quot;1&quot;) === 11</span><br></pre></td></tr></table></figure>
+<p>好的，接下来让我们把一些东西结合在一起最后得到字母<code>a</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">![] === false</span><br><span class="line"></span><br><span class="line">![]+[] === &quot;false&quot;</span><br><span class="line"></span><br><span class="line">+!![] === 1</span><br><span class="line"></span><br><span class="line">---------------------------------------------</span><br><span class="line"></span><br><span class="line">(![]+[])[+!![]] === &quot;a&quot;  // same as &quot;false&quot;[1]</span><br></pre></td></tr></table></figure>
+<p>我们可以通过<code>true</code>和<code>false</code>得到相似的字母<code>a</code>，<code>e</code>，<code>f</code>，<code>l</code>，<code>r</code>，<code>s</code>，<code>t</code>，<code>u</code>。那么我们可以从其他地方得到字母吗？</p>
+<p>我们可以通过一些特别的式子像<code>[]</code>、<code>[[]]</code>得到<code>undefined</code>，用我们上面的黄金法则得到另外的字母<code>d</code>，<code>i</code>和<code>n</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[][[]] + [] === &quot;undefined&quot;</span><br></pre></td></tr></table></figure>
+<p>到目前为止我们获得的所有字母，我们可以拼<code>fill</code>，<code>filter</code>和<code>find</code>。当然我们也可以拼一些其他的单词，这些单词最重要的是他们都是<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods" target="_blank" rel="noopener">Array methods</a>。这也就意味着他们是<code>Array</code>对象的一部分，可以直接调用数组实例（如<code>[2,1].sort()</code>）。</p>
+<p>现在了解另一件重要的JS的特性是一个对象的属性可以通过点符号<code>.</code>或方括号<code>[]</code>访问。上述数组方法是数组对象本身的属性，我们可以使用方括号代替点符号调用这些方法。</p>
+<p>所以<code>[2,1][&quot;sort&quot;]()</code>等价于<code>[2,1].sort()</code>。</p>
+<p>让我们继续看看到底发生了什么当试图使用一个数组的方法的时候，可以使用到目前为止拼写的但没有调用过的字母。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[][&quot;fill&quot;]</span><br></pre></td></tr></table></figure>
+<p>得到<code>function fill() { [native code] }</code>，可以使用我们的黄金法则把这个方法头作为一个字符串。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[][&quot;fill&quot;]+[] === &quot;function fill() &#123; [native code] &#125;&quot;</span><br></pre></td></tr></table></figure>
+<p>现在我们又得到le其他的字符：<code>c</code>，<code>o</code>，<code>v</code>，<code>(</code>，<code>)</code>，<code>{</code>，<code>[</code>，<code>]</code>，<code>}</code>。</p>
+<p>新得到的<code>c</code>和<code>o</code>现在可以形成    <code>constructor</code>这个单词了，到目前为止我们已经处理的对象可以得到它用字符串表示的构造器函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">true[&quot;constructor&quot;] + [] === &quot;function Boolean()&#123; [native code] &#125;&quot;</span><br><span class="line"></span><br><span class="line">0[&quot;constructor&quot;] + []    === &quot;function Number() &#123; [native code] &#125;&quot;</span><br><span class="line"></span><br><span class="line">&quot;&quot;[&quot;constructor&quot;] + []   === &quot;function String() &#123; [native code] &#125;&quot;</span><br><span class="line"></span><br><span class="line">[][&quot;constructor&quot;] + []   === &quot;function Array() &#123; [native code] &#125;&quot;</span><br></pre></td></tr></table></figure>
+<p><code>Number</code>类型的<code>toString</code>方法有一个称为<code>radix</code>(“基数”)的秘密的论点。它可以将数值在转换为一个字符串之前先经过基数换算。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(12)[&quot;toString&quot;](10) === &quot;12&quot; // base 10 - normal to us</span><br><span class="line"></span><br><span class="line">(12)[&quot;toString&quot;](2) === &quot;1100&quot; // base 2, or binary, for 12</span><br><span class="line"></span><br><span class="line">(12)[&quot;toString&quot;](8) === &quot;14&quot; // base 8 (octonary) for 12</span><br><span class="line"></span><br><span class="line">(12)[&quot;toString&quot;](16) === &quot;c&quot; // hex for 12</span><br></pre></td></tr></table></figure>
+<p>但是为什么基数只写到16？最大值是36包括所有的字符<code>0</code>-<code>9</code>和<code>a</code>-<code>z</code>，因此现在我们可以得到任何我们想要的字符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(10)[&quot;toString&quot;](36) === &quot;a&quot;</span><br><span class="line"></span><br><span class="line">(35)[&quot;toString&quot;](36) === &quot;z&quot;</span><br></pre></td></tr></table></figure>
+<p>棒极了！但是其它字符如标点符号和大写字母如何呢？让我们继续接着往下深入研究。</p>
+<p>这一点依赖于你的js正在运行在什么地方，它可能会或可能不会访问特定的预定义的对象或数据。如果你的JS运行在浏览器中，那么你可以访问到一些保留的<a href="https://developer.mozilla.org/en-US/docs/tag/HTML%20wrapper%20methods" target="_blank" rel="noopener">HTML wrapper methods</a>。</p>
+<p>比如，<code>bold</code>是用一个用<code>b</code>标签包裹字符串的字符串方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;test&quot;[&quot;bold&quot;]() === &quot;&lt;b&gt;test&lt;/b&gt;&quot;</span><br></pre></td></tr></table></figure>
+<p>这样我们也能够得到字符<code>&lt;</code>，<code>&gt;</code>and<code>/</code>。</p>
+<p>你或许已经听说过<code>escape</code>方法。它主要是将一个字符串转换为一个URI友好的格式，这样可以让浏览器解释编译。这个方法是我们研究的一个重要部分，因此我们要去探究它。我们可以拼写它但是如何真正执行它呢？它不是一个属于我们到目前为止处理过的任何类型的函数，实际上它是一个全局函数。</p>
+<p>任意一个函数的构造器是什么样的？</p>
+<p>答案是<code>function Function() { [native code] }</code>，它本身是一个函数对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[][&quot;fill&quot;][&quot;constructor&quot;] === Function</span><br></pre></td></tr></table></figure>
+<p>用这个方法我们可以给函数传递一个字符串代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Function(&quot;alert(&apos;test&apos;)&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Function anonymous() &#123;  </span><br><span class="line">    alert(&apos;test&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们可以像这样使用我们的<code>escape</code>方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[][&quot;fill&quot;][&quot;constructor&quot;](&quot;return escape(&apos; &apos;)&quot;)() === &quot;%20&quot;</span><br></pre></td></tr></table></figure>
+<p>如果我们想得到我们忘记的其他字符大写<code>C</code>是很重要的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[][&quot;fill&quot;][&quot;constructor&quot;](&quot;return escape(&apos;&lt;&apos;)&quot;)()[2] === &quot;C&quot;</span><br></pre></td></tr></table></figure>
+<p>用这个方法我们现在可以写一个<code>fromCharCode</code>方法，它可以将一个给定的十进制表示的数返回成一个    <code>Unicode</code>字符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;[&quot;constructor&quot;][&quot;fromCharCode&quot;](65) === &quot;A&quot;</span><br><span class="line"></span><br><span class="line">&quot;&quot;[&quot;constructor&quot;][&quot;fromCharCode&quot;](46) === &quot;.&quot;</span><br></pre></td></tr></table></figure>
+<p>我们可以使用<a href="http://unicodelookup.com/" target="_blank" rel="noopener">Unicode lookup</a>去找到一个任意字符用十进制表示的数。</p>
+<h4 id="为什么它是有用的呢？"><a href="#为什么它是有用的呢？" class="headerlink" title="为什么它是有用的呢？"></a>为什么它是有用的呢？</h4><p>eBay不久前做了一些<a href="http://arstechnica.co.uk/security/2016/02/ebay-has-no-plans-to-fix-severe-bug-that-allows-malware-distribution/" target="_blank" rel="noopener">bad things</a>，他们允许商家使用这些字符执行JS在页面中。但这是一个很少见的攻击量。一些人提到了混淆，但实际上有更好的混淆方式。</p>
+<p>Sources:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/JSFuck" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/JSFuck</a></li>
+<li><a href="https://esolangs.org/wiki/JSFuck" target="_blank" rel="noopener">https://esolangs.org/wiki/JSFuck</a></li>
+<li><a href="https://github.com/aemkei/jsfuck" target="_blank" rel="noopener">https://github.com/aemkei/jsfuck</a></li>
+<li><a href="http://patriciopalladino.com/blog/2012/08/09/non-alphanumeric-javascript.html" target="_blank" rel="noopener">http://patriciopalladino.com/blog/2012/08/09/non-alphanumeric-javascript.html</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="马跃Marico WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="马跃Marico Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/14/Axios：基于Promise的HTTP库/" rel="next" title="Axios：基于Promise的HTTP库">
+                <i class="fa fa-chevron-left"></i> Axios：基于Promise的HTTP库
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/30/JavaScript的那些奇技淫巧/" rel="prev" title="JavaScript的那些奇技淫巧">
+                JavaScript的那些奇技淫巧 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/05/12/6个字符的JavaScript之旅/" data-title="6个字符的JavaScript之旅" data-content data-url="http://yoursite.com/2017/05/12/6个字符的JavaScript之旅/">
+  <div class="ds-share-inline">
+    <ul class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/12/6个字符的JavaScript之旅/" data-title="6个字符的JavaScript之旅" data-url="http://yoursite.com/2017/05/12/6个字符的JavaScript之旅/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="马跃Marico">
+          <p class="site-author-name" itemprop="name">马跃Marico</p>
+          <p class="site-description motion-element" itemprop="description">Front-End Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mayue2015" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/5566587/marico" target="_blank" title="Stack Overflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Stack Overflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2089711385?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/MaYueMarico" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么它是有用的呢？"><span class="nav-number">1.</span> <span class="nav-text">为什么它是有用的呢？</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">马跃Marico</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"marico-mayue"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

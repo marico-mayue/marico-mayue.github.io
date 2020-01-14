@@ -1,0 +1,856 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="JavaScript,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/avatar.png?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="原文地址：https://medium.com/@kellywhiting/a-comparative-introduction-to-front-end-frameworks-angularjs-and-react-dd7c7410afc0  我一直在努力提高自己对AngularJS和React这两大前端框架的理解力和掌握能力，因为它们在硅谷看上去似乎是最受欢迎的。当然，React似乎是这其">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS和React的比较介绍">
+<meta property="og:url" content="http://yoursite.com/2017/09/07/AngularJS和React的比较介绍/index.html">
+<meta property="og:site_name" content="MaYue&#39;s Notes">
+<meta property="og:description" content="原文地址：https://medium.com/@kellywhiting/a-comparative-introduction-to-front-end-frameworks-angularjs-and-react-dd7c7410afc0  我一直在努力提高自己对AngularJS和React这两大前端框架的理解力和掌握能力，因为它们在硅谷看上去似乎是最受欢迎的。当然，React似乎是这其">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2016/0909/071937_TS50_2720166.png">
+<meta property="og:image" content="http://p0.qhimg.com/t0126af7f6cab871cb1.png">
+<meta property="og:updated_time" content="2017-09-08T08:33:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS和React的比较介绍">
+<meta name="twitter:description" content="原文地址：https://medium.com/@kellywhiting/a-comparative-introduction-to-front-end-frameworks-angularjs-and-react-dd7c7410afc0  我一直在努力提高自己对AngularJS和React这两大前端框架的理解力和掌握能力，因为它们在硅谷看上去似乎是最受欢迎的。当然，React似乎是这其">
+<meta name="twitter:image" content="http://static.oschina.net/uploads/space/2016/0909/071937_TS50_2720166.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/07/AngularJS和React的比较介绍/">
+
+  <title> AngularJS和React的比较介绍 | MaYue's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MaYue's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input">
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '我的博客笔记','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                AngularJS和React的比较介绍
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-07T00:00:00+08:00" content="2017-09-07">
+              2017-09-07
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web开发/" itemprop="url" rel="index">
+                    <span itemprop="name">web开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/09/07/AngularJS和React的比较介绍/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/07/AngularJS和React的比较介绍/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://static.oschina.net/uploads/space/2016/0909/071937_TS50_2720166.png" alt></p>
+<blockquote>
+<p>原文地址：<a href="https://medium.com/@kellywhiting/a-comparative-introduction-to-front-end-frameworks-angularjs-and-react-dd7c7410afc0" target="_blank" rel="noopener">https://medium.com/@kellywhiting/a-comparative-introduction-to-front-end-frameworks-angularjs-and-react-dd7c7410afc0</a></p>
+</blockquote>
+<p>我一直在努力提高自己对AngularJS和React这两大前端框架的理解力和掌握能力，因为它们在硅谷看上去似乎是最受欢迎的。当然，React似乎是这其中的领先者。像Facebook，Instagram，Airbnb，Dropbox，ProductHunt，Netflix都在使用它。AngularJS在Google，PayPal，YouTube，Vevo，Upwork都有落地项目中使用。</p>
+<p>因此如果你也正在尝试使用这两框架中的一个或二者都想，那这篇介绍的目的就是帮助大家去理解它们的基本实现。作为研究学习的开始，我已经把一个应用程序设置分成了4个步骤：</p>
+<ol>
+<li><p>用<code>Properties</code>和<code>Methods</code>建立一个<code>Controller</code></p>
+</li>
+<li><p>初始化和渲染</p>
+</li>
+<li><p>在<code>Scopes</code>间传递变量</p>
+</li>
+<li><p>添加事件</p>
+</li>
+</ol>
+<p>一旦你掌握了所有的知识，你可以自己决定你更喜欢哪一个框架。分享你的评论让我知道你是怎么认为的。</p>
+<p>作为开始，我将做一个<code>MVC</code>(Model-View-Controller)架构模式的快速总结。以下是我最喜欢的一种交互视觉解释，因为它也包含了数据库和客户端或者路由的关系。通常来说，MVC设计模式的实现是为了在函数之间建立一个清晰的分离。控制器<code>Controller</code>处理程序逻辑和客户端交互。模型层<code>Model</code>处理真实的数据。视图层<code>View</code>管理着客户端的表现层的页面渲染。当然这种设计模式是一个标准化的概念，实际上，每一个框架的实现都有它自己独特的方式。</p>
+<p><img src="http://p0.qhimg.com/t0126af7f6cab871cb1.png" alt></p>
+<p>来源: CodeBox.in</p>
+<h3 id="AngularJS"><a href="#AngularJS" class="headerlink" title="AngularJS"></a>AngularJS</h3><p>AngularJS是<code>MVW</code> (Model-View-Whatever)模式的一个典型的例子，它使<code>Model</code>层和<code>Controller</code>层结合在一个文件中，同时也介绍了<code>ng-xxx</code>的指令<code>directives</code>的使用，以及为一个给定节点确定某些属性和绑定函数，以便于Angular知道如何去处理它们。想要建立一个基本的Angular程序你可以执行完我的这四个步骤，可以看以下的代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//myJSFile.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">angular.module(&apos;myApp&apos;, [])</span><br><span class="line">  .controller(&apos;controllerName&apos;, function() &#123;</span><br><span class="line">    this.myGreeting = &apos;hello&apos;;</span><br><span class="line">    this.greetingsArray = [&apos;goodbye&apos;, &apos;welcome&apos;];</span><br><span class="line">  &#125;</span><br><span class="line">  this.pickGreeting = () =&gt; &#123;</span><br><span class="line">    console.log(&apos;select this greeting&apos;);</span><br><span class="line">  &#125;; </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//subComponent.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">angular.module(&apos;myApp&apos;)</span><br><span class="line">  .component(&apos;subComponent&apos;, &#123;</span><br><span class="line">    bindings: &#123;select: &apos;&lt;&apos;, greetings: &apos;&lt;&apos;&#125;,</span><br><span class="line">    templateURL: &apos;filePath/templates/subComponent.html&apos;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;! html file of parent component&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;html ng-app=&apos;myApp&apos;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    `&lt;script src=&apos;https://ajax.googleapis.com/ajax/libs/angularjs/ 1.6.5/angular.min.js&apos;&gt;`&lt;/script&gt;</span><br><span class="line">    `&lt;script src=&apos;filePath/myJSFile.js&apos;&gt;`</span><br><span class="line">    `&lt;script src=&apos;filePath/subComponent.js&apos;&gt;`</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div ng-controller=&apos;controllerName as ctrlName&apos;&gt;</span><br><span class="line">      &lt;input type=&apos;text&apos; ng-model=&apos;ctrlName.myGreeting&apos;     placeholder=&apos;Text here will display below&apos;&gt;</span><br><span class="line">      &lt;h1&gt;&#123;&#123;ctrlName.myGreeting&#125;&#125;&lt;/h1&gt;</span><br><span class="line">      &lt;subComponent select=&apos;ctrlName.pickGreeting&apos; greetings=&apos;ctrlName.greetingsArray&apos;/&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;! html file of subComponent&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;li ng-repeat=&apos;eachGreeting in $ctrl.greetings&apos;&gt;&lt;/li&gt;</span><br><span class="line">&lt;a ng-click=&apos;$ctrl.select()&apos;&gt;Click here to Select&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Step-1-用Properties和Methods建立一个Controller"><a href="#Step-1-用Properties和Methods建立一个Controller" class="headerlink" title="Step 1: 用Properties和Methods建立一个Controller"></a>Step 1: 用Properties和Methods建立一个Controller</h4><ul>
+<li><p>使用一个文件名启动.js文件，以便于你的HTML文件能够和JS文件建立联系。</p>
+</li>
+<li><p>创建一个包含所有属性和函数（包括匿名函数）方法的控制器<code>controller</code>，这里所有的属性和函数方法都会在.html文件中被使用。如果你仅仅有由一个组件形成的.js文件或者是有多个子组件构成的.js文件似乎看上去控制器<code>controller</code>的设置有稍微的不同。我这里展示了一个多子组件结构的例子。</p>
+</li>
+</ul>
+<h4 id="Step-2-初始化并且渲染页面"><a href="#Step-2-初始化并且渲染页面" class="headerlink" title="Step 2: 初始化并且渲染页面"></a>Step 2: 初始化并且渲染页面</h4><ul>
+<li><p>初始化.html文件中的标签以及让页面中的angular生效。</p>
+</li>
+<li><p>插入一个<code>script</code>标签用来载入Angular库。</p>
+</li>
+<li><p>插入一个<code>script</code>标签用来连接包含所有控制器逻辑的.js文件。</p>
+</li>
+<li><p>在子组件文件中添加一个<code>templateURL</code>属性用来指明这个.html文件是否该被渲染。</p>
+</li>
+</ul>
+<h4 id="Step-3-在Scope间传递变量"><a href="#Step-3-在Scope间传递变量" class="headerlink" title="Step 3: 在Scope间传递变量"></a>Step 3: 在Scope间传递变量</h4><ul>
+<li><p>在控制器中属性和方法需要给定联系通过给一个或别的节点插入指令。</p>
+</li>
+<li><p>在任何元素中使用双括号来注入动态文本内容，通过HTML文件以及.js文件中的模型层的数据绑定。</p>
+</li>
+<li><p>在子组件之间传递参数需要在.js文件中绑定对象和在.html文件的节点上达成一种匹配。在一个.html文件中指定参数和方法将被传给另一个子组件文件中。在例子中，标记为<code>subComponent</code>将和控制器中的<code>pickGreeting</code>建立关联，在子组件中，指定数据被传递的方式。这个例子还包括了可迭代节点的一种绑定方式。这里有很多可被添加的指令的类型。甚至你可以定义自己的指令。</p>
+</li>
+</ul>
+<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p>React使用<code>JSX</code>通过连接HTML和JS代码在一个单文件中来使得代码更具可读性。很多都说React其实只是MVC中的V层，但实际上在严格作用域规则下它确实仍然保持着数据和逻辑。React处理所有的数据和逻辑在一个单页文件中来创建组件并返回HTML代码进行页面渲染。可以看下如下的代码片段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//.js file - stateless component</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var SubComponent = (props) =&gt; (</span><br><span class="line">  &lt;div&gt;&lt;h1&gt;First Item is still: &#123;props.myItem&#125;&lt;/h1&gt;&lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//.js file - stateful component</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ClassName extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;items: []&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  onItemClick( ) &#123; </span><br><span class="line">    this.setState(&#123; </span><br><span class="line">      items: this.state.items.concat([&apos;hello&apos;]) </span><br><span class="line">    &#125;); </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> render () &#123; </span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;&lt;h1&gt;First Item: &#123;this.state.items[0]&#125;&lt;/h1&gt;</span><br><span class="line">      &lt;SubComponent myItem=&#123;this.state.items[0]&#125; /&gt;</span><br><span class="line">      &lt;li onClick=&#123;this.onItemClick.bind(this)&#125;&gt;Click to Add an Item</span><br><span class="line">      &lt;/li&gt;&lt;/div&gt;); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(&lt;ClassName propName=&#123;window.method&#125;, document.getElementById(&apos;appName&apos;));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;! html file of component&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  `&lt;script src=&apos;https://fb.me/react-dom-0.14.6.js&apos;&gt;`&lt;/script&gt;</span><br><span class="line">  `&lt;script src=&apos;https://fb.me/react-with-addons-0.14.6.js&apos;&gt;`&lt;/script&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=&apos;appName&apos;&gt;</span><br><span class="line">    &lt;h1&gt;My App&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  `&lt;script src=&apos;filePath/myJSFile_stateful.js&apos;&gt;`&lt;/script&gt;</span><br><span class="line">  `&lt;script src=&apos;filePath/myJSFile_stateless.js&apos;&gt;`&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Step-1-用Properties和Methods建立一个Controller-1"><a href="#Step-1-用Properties和Methods建立一个Controller-1" class="headerlink" title="Step 1: 用Properties和Methods建立一个Controller"></a>Step 1: 用Properties和Methods建立一个Controller</h4><ul>
+<li><p>创建一个继承自<code>React component</code>的组件。它可是一个无状态的函数组件也可以是有状态类的组件，有状态类组件需要一个渲染方法。</p>
+</li>
+<li><p>关于组件的html代码块必须以匹配的标签开始和结束，因此我建议都以a开始和结束。</p>
+</li>
+</ul>
+<h4 id="Step-2-初始化并且渲染页面-1"><a href="#Step-2-初始化并且渲染页面-1" class="headerlink" title="Step 2: 初始化并且渲染页面"></a>Step 2: 初始化并且渲染页面</h4><ul>
+<li><p>引入两个<code>script</code>标签用来加载React库。你可以使用我例子中的也可以下载包并且在文件中引入路径。</p>
+</li>
+<li><p>引入一个<code>script</code>标签用来引入你自己包含了控制器逻辑和数据的.js文件。</p>
+</li>
+<li><p>在.js文件底部调用<code>ReactDOM</code>渲染方法并通过传递两个参数绑定节点和组件变量：第一个参数是一个在.js文件中创建的<code>class</code>标签用来传递全局作用域下的数据和方法，第二个参数是html中创建的<code>id</code>。</p>
+</li>
+</ul>
+<h4 id="Step-3-在Scope间传递变量-1"><a href="#Step-3-在Scope间传递变量-1" class="headerlink" title="Step 3: 在Scope间传递变量"></a>Step 3: 在Scope间传递变量</h4><ul>
+<li><p>通过关键词<code>props</code>来在程序间传递变量，它管理着组件和<code>model</code>层间的<code>scope</code>。对于一个无状态组件就像步骤一里描述的一样，对于一个有状态组件，利用构造器去调用<code>super()</code>为的是在父类中扩展构建方法和设置状态变量。如果你想在构造器中访问到<code>this</code>可以把<code>props</code>作为参数传递到父类。</p>
+</li>
+<li><p>在包含渲染方法的html代码中使用<code>state</code>去访问<code>state</code>变量。</p>
+</li>
+</ul>
+<h4 id="Step-4-添加事件监听"><a href="#Step-4-添加事件监听" class="headerlink" title="Step 4: 添加事件监听"></a>Step 4: 添加事件监听</h4><ul>
+<li><p>在类组件中创建函数方法去处理事件。</p>
+</li>
+<li><p>给HTML元素上添加事件处理函数，确保他们都绑定在了<code>this</code>上并且在运行时是你期望的效果。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="马跃Marico WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="马跃Marico Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/05/事件代理：模式还是反模式/" rel="next" title="事件代理：模式还是反模式">
+                <i class="fa fa-chevron-left"></i> 事件代理：模式还是反模式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/26/通过使用基于Vue的Onsen UI Tab切换提高用户体验/" rel="prev" title="通过使用基于Vue的Onsen UI Tab切换提高用户体验">
+                通过使用基于Vue的Onsen UI Tab切换提高用户体验 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/09/07/AngularJS和React的比较介绍/" data-title="AngularJS和React的比较介绍" data-content data-url="http://yoursite.com/2017/09/07/AngularJS和React的比较介绍/">
+  <div class="ds-share-inline">
+    <ul class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/09/07/AngularJS和React的比较介绍/" data-title="AngularJS和React的比较介绍" data-url="http://yoursite.com/2017/09/07/AngularJS和React的比较介绍/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="马跃Marico">
+          <p class="site-author-name" itemprop="name">马跃Marico</p>
+          <p class="site-description motion-element" itemprop="description">Front-End Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mayue2015" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/5566587/marico" target="_blank" title="Stack Overflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Stack Overflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2089711385?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/MaYueMarico" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS"><span class="nav-number">1.</span> <span class="nav-text">AngularJS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-1-用Properties和Methods建立一个Controller"><span class="nav-number">1.1.</span> <span class="nav-text">Step 1: 用Properties和Methods建立一个Controller</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-2-初始化并且渲染页面"><span class="nav-number">1.2.</span> <span class="nav-text">Step 2: 初始化并且渲染页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-3-在Scope间传递变量"><span class="nav-number">1.3.</span> <span class="nav-text">Step 3: 在Scope间传递变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React"><span class="nav-number">2.</span> <span class="nav-text">React</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-1-用Properties和Methods建立一个Controller-1"><span class="nav-number">2.1.</span> <span class="nav-text">Step 1: 用Properties和Methods建立一个Controller</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-2-初始化并且渲染页面-1"><span class="nav-number">2.2.</span> <span class="nav-text">Step 2: 初始化并且渲染页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-3-在Scope间传递变量-1"><span class="nav-number">2.3.</span> <span class="nav-text">Step 3: 在Scope间传递变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-4-添加事件监听"><span class="nav-number">2.4.</span> <span class="nav-text">Step 4: 添加事件监听</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">马跃Marico</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"marico-mayue"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
