@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="HTTP库,">
+  <meta name="keywords" content="HTTP,">
 
 
 
@@ -102,15 +102,14 @@
 
 
 
-<meta name="description" content="前言在Vue1.0中我们知道和服务端通信发送请求获取数据依赖的是vue-resource，但自Vue更新到2.0之后，作者就宣告不再对vue-resource更新，而是改成了推荐的Axios这一HTTP库。作用上类似我们熟知的一些Ajax库，但是Axios是基于Promise的HTTP请求客户端，可同时在浏览器和Node.js中使用，这好像更符合目前前端的技术新趋势。现将Axios的官方文档及示">
-<meta name="keywords" content="HTTP库">
+<meta name="description" content="前言在Vue1.0中我们知道和服务端通信发送请求获取数据依赖的是vue-resource，但自Vue更新到2.0之后，作者就宣告不再对vue-resource更新，而是改成了推荐的Axios这一HTTP库。作用上类似我们熟知的一些Ajax库，但是Axios是基于Promise的HTTP请求客户端，可同时在浏览器和Node.js中使用，这好像更符合目前前端的技术新趋势。现将Axios的官方文档及示例">
+<meta name="keywords" content="HTTP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Axios：基于Promise的HTTP库">
 <meta property="og:url" content="http://yoursite.com/2017/04/14/Axios：基于Promise的HTTP库/index.html">
 <meta property="og:site_name" content="MaYue&#39;s Notes">
-<meta property="og:description" content="前言在Vue1.0中我们知道和服务端通信发送请求获取数据依赖的是vue-resource，但自Vue更新到2.0之后，作者就宣告不再对vue-resource更新，而是改成了推荐的Axios这一HTTP库。作用上类似我们熟知的一些Ajax库，但是Axios是基于Promise的HTTP请求客户端，可同时在浏览器和Node.js中使用，这好像更符合目前前端的技术新趋势。现将Axios的官方文档及示">
+<meta property="og:description" content="前言在Vue1.0中我们知道和服务端通信发送请求获取数据依赖的是vue-resource，但自Vue更新到2.0之后，作者就宣告不再对vue-resource更新，而是改成了推荐的Axios这一HTTP库。作用上类似我们熟知的一些Ajax库，但是Axios是基于Promise的HTTP请求客户端，可同时在浏览器和Node.js中使用，这好像更符合目前前端的技术新趋势。现将Axios的官方文档及示例">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/bg111.png">
 <meta property="og:image" content="https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png">
 <meta property="og:image" content="https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png">
 <meta property="og:image" content="https://raw.github.com/alrra/browser-logos/master/src/safari/safari_48x48.png">
@@ -118,11 +117,11 @@
 <meta property="og:image" content="https://raw.github.com/alrra/browser-logos/master/src/edge/edge_48x48.png">
 <meta property="og:image" content="https://raw.github.com/alrra/browser-logos/master/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png">
 <meta property="og:image" content="https://saucelabs.com/open_sauce/build_matrix/axios.svg">
-<meta property="og:updated_time" content="2017-04-14T05:35:05.000Z">
+<meta property="og:updated_time" content="2020-01-14T07:31:40.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Axios：基于Promise的HTTP库">
-<meta name="twitter:description" content="前言在Vue1.0中我们知道和服务端通信发送请求获取数据依赖的是vue-resource，但自Vue更新到2.0之后，作者就宣告不再对vue-resource更新，而是改成了推荐的Axios这一HTTP库。作用上类似我们熟知的一些Ajax库，但是Axios是基于Promise的HTTP请求客户端，可同时在浏览器和Node.js中使用，这好像更符合目前前端的技术新趋势。现将Axios的官方文档及示">
-<meta name="twitter:image" content="http://oe3sqmqy4.bkt.clouddn.com/bg111.png">
+<meta name="twitter:description" content="前言在Vue1.0中我们知道和服务端通信发送请求获取数据依赖的是vue-resource，但自Vue更新到2.0之后，作者就宣告不再对vue-resource更新，而是改成了推荐的Axios这一HTTP库。作用上类似我们熟知的一些Ajax库，但是Axios是基于Promise的HTTP请求客户端，可同时在浏览器和Node.js中使用，这好像更符合目前前端的技术新趋势。现将Axios的官方文档及示例">
+<meta name="twitter:image" content="https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png">
 
 
 
@@ -180,7 +179,7 @@
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle"></p>
+  <p class="site-subtitle">Quick notes</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -341,8 +340,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web开发/" itemprop="url" rel="index">
-                    <span itemprop="name">web开发</span>
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
                   </a>
                 </span>
 
@@ -381,8 +380,7 @@
       
 
       
-        <p><img src="http://oe3sqmqy4.bkt.clouddn.com/bg111.png" alt></p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在Vue1.0中我们知道和服务端通信发送请求获取数据依赖的是vue-resource，但自Vue更新到2.0之后，作者就宣告不再对vue-resource更新，而是改成了推荐的Axios这一HTTP库。作用上类似我们熟知的一些Ajax库，但是Axios是基于Promise的HTTP请求客户端，可同时在浏览器和Node.js中使用，这好像更符合目前前端的技术新趋势。现将Axios的官方文档及示例做一介绍。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在Vue1.0中我们知道和服务端通信发送请求获取数据依赖的是vue-resource，但自Vue更新到2.0之后，作者就宣告不再对vue-resource更新，而是改成了推荐的Axios这一HTTP库。作用上类似我们熟知的一些Ajax库，但是Axios是基于Promise的HTTP请求客户端，可同时在浏览器和Node.js中使用，这好像更符合目前前端的技术新趋势。现将Axios的官方文档及示例做一介绍。</p>
 <h4 id="实现的功能特点"><a href="#实现的功能特点" class="headerlink" title="实现的功能特点"></a>实现的功能特点</h4><ul>
 <li>可以从浏览器端发起XMLHttpRequests请求</li>
 <li>node端发起http请求</li>
@@ -494,13 +492,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="马跃Marico WeChat Pay">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Marico WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="马跃Marico Alipay">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="Marico Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -515,7 +513,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/HTTP库/" rel="tag">#HTTP库</a>
+            <a href="/tags/HTTP/" rel="tag">#HTTP</a>
           
         </div>
       
@@ -612,8 +610,8 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="马跃Marico">
-          <p class="site-author-name" itemprop="name">马跃Marico</p>
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Marico">
+          <p class="site-author-name" itemprop="name">Marico</p>
           <p class="site-description motion-element" itemprop="description">Front-End Developer</p>
         </div>
         <nav class="site-state motion-element">
@@ -627,7 +625,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -636,7 +634,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -726,7 +724,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">马跃Marico</span>
+  <span class="author" itemprop="copyrightHolder">Marico</span>
 </div>
 
 <div class="powered-by">

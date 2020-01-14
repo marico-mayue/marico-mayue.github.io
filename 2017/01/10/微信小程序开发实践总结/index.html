@@ -102,26 +102,25 @@
 
 
 
-<meta name="description" content="前言近日，小程序如约而至在1月9日凌晨在微信IOS和Android最新6.5.3版本中上线了期待已久的微信小程序，用户只需要更新最新版微信并搜索自己感兴趣的就能够体验已发布的小程序了。本人有幸和另一位团队的小伙伴也一起参与了公司车管家小程序的开发，我们前端这边的开发整体进度都还算顺利没有遇到特别坑的地方，当然这里离不开小伙伴雪娇童鞋她们在这之前做了很多产品和技术上的调研以及做了Demo的实践还有">
+<meta name="description" content="前言近日，小程序如约而至在1月9日凌晨在微信IOS和Android最新6.5.3版本中上线了期待已久的微信小程序，用户只需要更新最新版微信并搜索自己感兴趣的就能够体验已发布的小程序了。本人有幸和另一位团队的小伙伴也一起参与了公司车管家小程序的开发，我们前端这边的开发整体进度都还算顺利没有遇到特别坑的地方，当然这里离不开小伙伴雪娇童鞋她们在这之前做了很多产品和技术上的调研以及做了Demo的实践还有分">
 <meta name="keywords" content="原创">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序开发实践总结">
 <meta property="og:url" content="http://yoursite.com/2017/01/10/微信小程序开发实践总结/index.html">
 <meta property="og:site_name" content="MaYue&#39;s Notes">
-<meta property="og:description" content="前言近日，小程序如约而至在1月9日凌晨在微信IOS和Android最新6.5.3版本中上线了期待已久的微信小程序，用户只需要更新最新版微信并搜索自己感兴趣的就能够体验已发布的小程序了。本人有幸和另一位团队的小伙伴也一起参与了公司车管家小程序的开发，我们前端这边的开发整体进度都还算顺利没有遇到特别坑的地方，当然这里离不开小伙伴雪娇童鞋她们在这之前做了很多产品和技术上的调研以及做了Demo的实践还有">
+<meta property="og:description" content="前言近日，小程序如约而至在1月9日凌晨在微信IOS和Android最新6.5.3版本中上线了期待已久的微信小程序，用户只需要更新最新版微信并搜索自己感兴趣的就能够体验已发布的小程序了。本人有幸和另一位团队的小伙伴也一起参与了公司车管家小程序的开发，我们前端这边的开发整体进度都还算顺利没有遇到特别坑的地方，当然这里离不开小伙伴雪娇童鞋她们在这之前做了很多产品和技术上的调研以及做了Demo的实践还有分">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/201701051003042966.png">
 <meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/aa.png">
 <meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/b.png">
 <meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/c.png">
 <meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/d.png">
 <meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/e.jpeg">
 <meta property="og:image" content="http://img.blog.csdn.net/20161012190123468">
-<meta property="og:updated_time" content="2017-01-12T09:35:27.000Z">
+<meta property="og:updated_time" content="2020-01-14T07:31:13.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序开发实践总结">
-<meta name="twitter:description" content="前言近日，小程序如约而至在1月9日凌晨在微信IOS和Android最新6.5.3版本中上线了期待已久的微信小程序，用户只需要更新最新版微信并搜索自己感兴趣的就能够体验已发布的小程序了。本人有幸和另一位团队的小伙伴也一起参与了公司车管家小程序的开发，我们前端这边的开发整体进度都还算顺利没有遇到特别坑的地方，当然这里离不开小伙伴雪娇童鞋她们在这之前做了很多产品和技术上的调研以及做了Demo的实践还有">
-<meta name="twitter:image" content="http://oe3sqmqy4.bkt.clouddn.com/201701051003042966.png">
+<meta name="twitter:description" content="前言近日，小程序如约而至在1月9日凌晨在微信IOS和Android最新6.5.3版本中上线了期待已久的微信小程序，用户只需要更新最新版微信并搜索自己感兴趣的就能够体验已发布的小程序了。本人有幸和另一位团队的小伙伴也一起参与了公司车管家小程序的开发，我们前端这边的开发整体进度都还算顺利没有遇到特别坑的地方，当然这里离不开小伙伴雪娇童鞋她们在这之前做了很多产品和技术上的调研以及做了Demo的实践还有分">
+<meta name="twitter:image" content="http://oe3sqmqy4.bkt.clouddn.com/aa.png">
 
 
 
@@ -179,7 +178,7 @@
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle"></p>
+  <p class="site-subtitle">Quick notes</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -340,8 +339,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/微信小程序/" itemprop="url" rel="index">
-                    <span itemprop="name">微信小程序</span>
+                  <a href="/categories/miniapp/" itemprop="url" rel="index">
+                    <span itemprop="name">miniapp</span>
                   </a>
                 </span>
 
@@ -380,8 +379,7 @@
       
 
       
-        <p><img src="http://oe3sqmqy4.bkt.clouddn.com/201701051003042966.png" alt></p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>近日，小程序如约而至在1月9日凌晨在微信IOS和Android最新6.5.3版本中上线了期待已久的微信小程序，用户只需要更新最新版微信并搜索自己感兴趣的就能够体验已发布的小程序了。本人有幸和另一位团队的小伙伴也一起参与了公司车管家小程序的开发，我们前端这边的开发整体进度都还算顺利没有遇到特别坑的地方，当然这里离不开小伙伴雪娇童鞋她们在这之前做了很多产品和技术上的调研以及做了Demo的实践还有分享等等工作，都确保了我们开发上没有遇到大的阻碍。现将我从小程序的学习到开发到测试的过程中遇到的问题和踩的一些坑做一个小总结。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>近日，小程序如约而至在1月9日凌晨在微信IOS和Android最新6.5.3版本中上线了期待已久的微信小程序，用户只需要更新最新版微信并搜索自己感兴趣的就能够体验已发布的小程序了。本人有幸和另一位团队的小伙伴也一起参与了公司车管家小程序的开发，我们前端这边的开发整体进度都还算顺利没有遇到特别坑的地方，当然这里离不开小伙伴雪娇童鞋她们在这之前做了很多产品和技术上的调研以及做了Demo的实践还有分享等等工作，都确保了我们开发上没有遇到大的阻碍。现将我从小程序的学习到开发到测试的过程中遇到的问题和踩的一些坑做一个小总结。</p>
 <h3 id="关于整体的开发模式"><a href="#关于整体的开发模式" class="headerlink" title="关于整体的开发模式"></a>关于整体的开发模式</h3><p>小程序不像我们前端er日常开发web和H5那样在任意一个文本编辑器里编写代码在浏览器中就能实时看到页面还有本地和对外访问的链接地址，小程序是没有这些的（后面有牛人开发并开源了<strong>WEPT</strong>,集成了微信小程序组件UI可以在浏览器中查看调试）。微信为开发小程序应用提供了<strong>web开发者工具</strong>供开发者使用（实际开发中这工具开发体验真是low到可以了），建议大家实际开发时依旧使用自己的IDE，用<strong>WEPT</strong>或者<strong>web开发者工具</strong>查看页面。从小程序的开发语言中我们可以看到一些<code>React</code>、<code>Angular</code>以及<code>Vue</code>的影子，也许小程序就是集大成了这三大目前最主流的前端框架（?问号脸），因此只要开发者之前有这三种框架的开发经验再认真阅读阅读小程序的API文档，那么小程序的学习成本和上手开发成本都不是很高。它的模式很闭环很严格限制，只要按照最新的官方文档去规范开发，开发完成利用开发者工具平台打包压缩上传至微信服务器，然后微信进行审核，审核通过后会发布上线，用户在客户端搜索小程序名称获取并离线缓存至微信本地文件系统，供用户离线浏览访问。</p>
 <h3 id="关于开发者工具"><a href="#关于开发者工具" class="headerlink" title="关于开发者工具"></a>关于开发者工具</h3><p><img src="http://oe3sqmqy4.bkt.clouddn.com/aa.png" alt></p>
 <p>左侧边栏切换选项依次是：</p>
@@ -496,13 +494,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="马跃Marico WeChat Pay">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Marico WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="马跃Marico Alipay">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="Marico Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -614,8 +612,8 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="马跃Marico">
-          <p class="site-author-name" itemprop="name">马跃Marico</p>
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Marico">
+          <p class="site-author-name" itemprop="name">Marico</p>
           <p class="site-description motion-element" itemprop="description">Front-End Developer</p>
         </div>
         <nav class="site-state motion-element">
@@ -629,7 +627,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -638,7 +636,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -728,7 +726,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">马跃Marico</span>
+  <span class="author" itemprop="copyrightHolder">Marico</span>
 </div>
 
 <div class="powered-by">

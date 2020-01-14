@@ -102,20 +102,18 @@
 
 
 
-<meta name="description" content="No1.柯里化(currying)与部分应用(partial application)柯里化(currying)柯里化是使一个函数 f: X * Y -&amp;gt; R 转变为 f’: X -&amp;gt; (Y -&amp;gt; R) 与用两个参数调用f不同，我们用一个参数运行f’。返回的结果是一个函数，然后用第二个参数调用此函数，得到结果。 如此，如果未柯里化的函数f这样调用 f(3,5) 柯里化后的函数f">
+<meta name="description" content="No1.柯里化(currying)与部分应用(partial application)柯里化(currying)柯里化是使一个函数 f: X * Y -&amp;gt; R 转变为 f’: X -&amp;gt; (Y -&amp;gt; R) 与用两个参数调用f不同，我们用一个参数运行f’。返回的结果是一个函数，然后用第二个参数调用此函数，得到结果。 如此，如果未柯里化的函数f这样调用 f(3,5) 柯里化后的函数f’">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript的那些奇技淫巧">
 <meta property="og:url" content="http://yoursite.com/2017/06/30/JavaScript的那些奇技淫巧/index.html">
 <meta property="og:site_name" content="MaYue&#39;s Notes">
-<meta property="og:description" content="No1.柯里化(currying)与部分应用(partial application)柯里化(currying)柯里化是使一个函数 f: X * Y -&amp;gt; R 转变为 f’: X -&amp;gt; (Y -&amp;gt; R) 与用两个参数调用f不同，我们用一个参数运行f’。返回的结果是一个函数，然后用第二个参数调用此函数，得到结果。 如此，如果未柯里化的函数f这样调用 f(3,5) 柯里化后的函数f">
+<meta property="og:description" content="No1.柯里化(currying)与部分应用(partial application)柯里化(currying)柯里化是使一个函数 f: X * Y -&amp;gt; R 转变为 f’: X -&amp;gt; (Y -&amp;gt; R) 与用两个参数调用f不同，我们用一个参数运行f’。返回的结果是一个函数，然后用第二个参数调用此函数，得到结果。 如此，如果未柯里化的函数f这样调用 f(3,5) 柯里化后的函数f’">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oe3sqmqy4.bkt.clouddn.com/js.png">
-<meta property="og:updated_time" content="2017-06-30T13:18:16.000Z">
+<meta property="og:updated_time" content="2020-01-14T07:31:43.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的那些奇技淫巧">
-<meta name="twitter:description" content="No1.柯里化(currying)与部分应用(partial application)柯里化(currying)柯里化是使一个函数 f: X * Y -&amp;gt; R 转变为 f’: X -&amp;gt; (Y -&amp;gt; R) 与用两个参数调用f不同，我们用一个参数运行f’。返回的结果是一个函数，然后用第二个参数调用此函数，得到结果。 如此，如果未柯里化的函数f这样调用 f(3,5) 柯里化后的函数f">
-<meta name="twitter:image" content="http://oe3sqmqy4.bkt.clouddn.com/js.png">
+<meta name="twitter:description" content="No1.柯里化(currying)与部分应用(partial application)柯里化(currying)柯里化是使一个函数 f: X * Y -&amp;gt; R 转变为 f’: X -&amp;gt; (Y -&amp;gt; R) 与用两个参数调用f不同，我们用一个参数运行f’。返回的结果是一个函数，然后用第二个参数调用此函数，得到结果。 如此，如果未柯里化的函数f这样调用 f(3,5) 柯里化后的函数f’">
 
 
 
@@ -173,7 +171,7 @@
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle"></p>
+  <p class="site-subtitle">Quick notes</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -334,8 +332,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web开发/" itemprop="url" rel="index">
-                    <span itemprop="name">web开发</span>
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
                   </a>
                 </span>
 
@@ -374,8 +372,7 @@
       
 
       
-        <p><img src="http://oe3sqmqy4.bkt.clouddn.com/js.png" alt></p>
-<h3 id="No1-柯里化-currying-与部分应用-partial-application"><a href="#No1-柯里化-currying-与部分应用-partial-application" class="headerlink" title="No1.柯里化(currying)与部分应用(partial application)"></a>No1.柯里化(currying)与部分应用(partial application)</h3><h5 id="柯里化-currying"><a href="#柯里化-currying" class="headerlink" title="柯里化(currying)"></a>柯里化(currying)</h5><p>柯里化是使一个函数</p>
+        <h3 id="No1-柯里化-currying-与部分应用-partial-application"><a href="#No1-柯里化-currying-与部分应用-partial-application" class="headerlink" title="No1.柯里化(currying)与部分应用(partial application)"></a>No1.柯里化(currying)与部分应用(partial application)</h3><h5 id="柯里化-currying"><a href="#柯里化-currying" class="headerlink" title="柯里化(currying)"></a>柯里化(currying)</h5><p>柯里化是使一个函数</p>
 <p>f: X * Y -&gt; R</p>
 <p>转变为</p>
 <p>f’: X -&gt; (Y -&gt; R)</p>
@@ -454,13 +451,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="马跃Marico WeChat Pay">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Marico WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="马跃Marico Alipay">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="Marico Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -572,8 +569,8 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="马跃Marico">
-          <p class="site-author-name" itemprop="name">马跃Marico</p>
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Marico">
+          <p class="site-author-name" itemprop="name">Marico</p>
           <p class="site-description motion-element" itemprop="description">Front-End Developer</p>
         </div>
         <nav class="site-state motion-element">
@@ -587,7 +584,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -596,7 +593,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -686,7 +683,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">马跃Marico</span>
+  <span class="author" itemprop="copyrightHolder">Marico</span>
 </div>
 
 <div class="powered-by">
