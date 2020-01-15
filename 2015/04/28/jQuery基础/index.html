@@ -1,0 +1,803 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="jQuery,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/avatar.png?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="1.有两个版本的 jQuery 可供下载：Production version - 用于实际的网站中，已被精简和压缩。Development version - 用于测试和开发（未压缩，是可读的代码） 2.$(this).hide() - 隐藏当前元素 3.隐藏/显示：$(selector).hide(speed,callback); $(selector).show(speed,callback">
+<meta name="keywords" content="jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery基础">
+<meta property="og:url" content="http://yoursite.com/2015/04/28/jQuery基础/index.html">
+<meta property="og:site_name" content="MaYue&#39;s Notes">
+<meta property="og:description" content="1.有两个版本的 jQuery 可供下载：Production version - 用于实际的网站中，已被精简和压缩。Development version - 用于测试和开发（未压缩，是可读的代码） 2.$(this).hide() - 隐藏当前元素 3.隐藏/显示：$(selector).hide(speed,callback); $(selector).show(speed,callback">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-01-15T08:27:23.685Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery基础">
+<meta name="twitter:description" content="1.有两个版本的 jQuery 可供下载：Production version - 用于实际的网站中，已被精简和压缩。Development version - 用于测试和开发（未压缩，是可读的代码） 2.$(this).hide() - 隐藏当前元素 3.隐藏/显示：$(selector).hide(speed,callback); $(selector).show(speed,callback">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/04/28/jQuery基础/">
+
+  <title> jQuery基础 | MaYue's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MaYue's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Quick notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input">
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '我的博客笔记','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                jQuery基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-04-28T00:00:00+08:00" content="2015-04-28">
+              2015-04-28
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/jQuery/" itemprop="url" rel="index">
+                    <span itemprop="name">jQuery</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/04/28/jQuery基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/28/jQuery基础/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1.有两个版本的 jQuery 可供下载：<br>Production version - 用于实际的网站中，已被精简和压缩。<br>Development version - 用于测试和开发（未压缩，是可读的代码）</p>
+<p>2.$(this).hide() - 隐藏当前元素</p>
+<p>3.隐藏/显示：<br>$(selector).hide(speed,callback);</p>
+<p>$(selector).show(speed,callback);<br>可选的 speed 参数规定隐藏/显示的速度，可以取以下值：”slow”、”fast” 或毫秒。<br>可选的 callback 参数是隐藏或显示完成后所执行的函数名称。</p>
+<p>4.切换显示和隐藏：<br>$(selector).toggle(speed,callback);</p>
+<p>5.淡入/淡出<br>$(selector).fadeIn(speed,callback);<br>$(selector).fadeOut(speed,callback);<br>$(selector).fadeToggle(speed,callback);<br>$(selector).fadeTo(speed,opacity,callback);</p>
+<p>6.上下滑动：<br>$(selector).slideDown(speed,callback);<br>$(selector).slideUp(speed,callback);<br>$(selector).slideToggle(speed,callback);</p>
+<p>7.动画<br>$(selector).animate({params},speed,callback);<br>必需的 params 参数定义形成动画的 CSS 属性。<br>可选的 speed 参数规定效果的时长。它可以取以下值：”slow”、”fast” 或毫秒。<br>可选的 callback 参数是动画完成后所执行的函数名称。<br>默认地，所有 HTML 元素都有一个静态位置，且无法移动。如需对位置进行操作，要记得首先把元素的 CSS position 属性设置为 relative、fixed 或 absolute！</p>
+<p>8.停止动画<br>$(selector).stop(stopAll,goToEnd); //(false,false) —&gt; (true,true)</p>
+<p>Callback 、Chaining …</p>
+<p>9.获得内容 - text()、html() 以及 val()<br>三个简单实用的用于 DOM 操作的 jQuery 方法：<br>text() - 设置或返回所选元素的文本内容<br>html() - 设置或返回所选元素的内容（包括 HTML 标记）<br>val() - 设置或返回表单字段的值</p>
+<p>attr() 方法用于获取属性值。</p>
+<p>10.添加新的 HTML 内容<br>我们将学习用于添加新内容的四个 jQuery 方法：<br>append() - 在被选元素的结尾插入内容<br>prepend() - 在被选元素的开头插入内容<br>after() - 在被选元素之后插入内容<br>before() - 在被选元素之前插入内容</p>
+<p>11.删除<br>jQuery remove() 方法删除被选元素及其子元素。<br>jQuery empty() 方法删除被选元素的子元素。</p>
+<p>12.jQuery 操作 CSS<br>jQuery 拥有若干进行 CSS 操作的方法。我们将学习下面这些：<br>addClass() - 向被选元素添加一个或多个类<br>removeClass() - 从被选元素删除一个或多个类<br>toggleClass() - 对被选元素进行添加/删除类的切换操作<br>css() - 设置或返回样式属性</p>
+<p>13.jQuery 尺寸 方法<br>jQuery 提供多个处理尺寸的重要方法：<br>width()  //.width(200) 设置值<br>height()<br>innerWidth()<br>innerHeight()<br>outerWidth()   //true:包括内边距、边框和外边距<br>outerHeight()   //true:包括内边距、边框和外边距</p>
+<p>14.向上遍历 DOM 树<br>这些 jQuery 方法很有用，它们用于向上遍历 DOM 树：<br>parent() 直接<br>parents() 所有<br>parentsUntil() 之间</p>
+<p>15.向下遍历 DOM 树<br>下面是两个用于向下遍历 DOM 树的 jQuery 方法：<br>children() 直接<br>find() 所有后代 find(‘*’)</p>
+<p>16.在 DOM 树中水平遍历<br>有许多有用的方法让我们在 DOM 树进行水平遍历：<br>siblings() 方法返回被选元素的所有同胞元素。<br>next() 方法返回被选元素的下一个同胞元素。<br>nextAll() 方法返回被选元素的所有跟随的同胞元素。<br>nextUntil() 方法返回介于两个给定参数之间的所有跟随的同胞元素<br>prev()<br>prevAll()<br>prevUntil()</p>
+<p>17.过滤<br>first() 方法返回被选元素的首个元素。<br>last() 方法返回被选元素的最后一个元素。<br>eq() 方法返回被选元素中带有指定索引号的元素。// 0 1 2 …<br>filter() 方法允许您规定一个标准。不匹配这个标准的元素会被从集合中删除，匹配的元素会被返回。<br>not() 方法返回不匹配标准的所有元素。提示：not() 方法与 filter() 相反。</p>
+<ol start="18">
+<li>load() 方法完成后所要允许的回调函数。回调函数可以设置不同的参数：<br>responseTxt - 包含调用成功时的结果内容<br>statusTXT - 包含调用的状态<br>xhr - 包含 XMLHttpRequest 对象</li>
+</ol>
+<p>19.<br>$.get(URL,callback);<br>$.get() 的第一个参数是我们希望请求的 URL（”demo_test.asp”）。第二个参数是回调函数。第一个回调参数存有被请求页面的内容，第二个回调参数存有请求的状态。</p>
+<p>$.post(URL,data,callback);<br>$.post() 的第一个参数是我们希望请求的 URL (“demo_test_post.asp”)。然后我们连同请求（name 和 city）一起发送数据。”demo_test_post.asp” 中的 ASP 脚本读取这些参数，对它们进行处理，然后返回结果。第三个参数是回调函数。第一个回调参数存有被请求页面的内容，而第二个参数存有请求的状态。</p>
+<p>20.jQuery noConflict() 方法<br>如果你的 jQuery 代码块使用 $ 简写，并且您不愿意改变这个快捷方式，那么您可以把 $ 符号作为变量传递给 ready 方法。这样就可以在函数内使用 $ 符号了 - 而在函数外，依旧不得不使用 “jQuery”：<br>$.noConflict();<br>jQuery(document).ready(function($){<br>  $(“button”).click(function(){<br>    $(“p”).text(“jQuery 仍在运行！”);<br>  });<br>});</p>
+<p>21.<br>  GET POST<br>后退按钮/刷新 无害 数据会被重新提交（浏览器应该告知用户数据会被重新提交）。<br>书签 可收藏为书签 不可收藏为书签<br>缓存 能被缓存 不能缓存<br>编码类型 application/x-www-form-urlencoded application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。<br>历史 参数保留在浏览器历史中。 参数不会保存在浏览器历史中。<br>对数据长度的限制 是的。当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。 无限制。<br>对数据类型的限制 只允许 ASCII 字符。 没有限制。也允许二进制数据。<br>安全性 与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ！ POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。<br>可见性 数据在 URL 中对所有人都是可见的。 数据不会显示在 URL 中。</p>
+<p>方法 描述<br>HEAD 与 GET 相同，但只返回 HTTP 报头，不返回文档主体。<br>PUT 上传指定的 URI 表示。<br>DELETE 删除指定资源。<br>OPTIONS 返回服务器支持的 HTTP 方法。<br>CONNECT 把请求连接转换到透明的 TCP/IP 通道。</p>
+<p>append()前面是要选择的对象，后面是要在对象内插入的元素内容<br>appendTo()前面是要插入的元素内容，而后面是要选择的对象</p>
+<hr>
+<p>选择器 描述<br>.after( content ) 在匹配元素集合中的每个元素后面插入参数所指定的内容，作为其兄弟节点<br>.before( content ) 据参数设定，在匹配元素的前面插入内容<br>after向元素的后边添加html代码，如果元素后面有元素了，那将后面的元素后移，然后将html代码插入</p>
+<h2 id="before向元素的前边添加html代码，如果元素前面有元素了，那将前面的元素前移，然后将html代码插"><a href="#before向元素的前边添加html代码，如果元素前面有元素了，那将前面的元素前移，然后将html代码插" class="headerlink" title="before向元素的前边添加html代码，如果元素前面有元素了，那将前面的元素前移，然后将html代码插"></a>before向元素的前边添加html代码，如果元素前面有元素了，那将前面的元素前移，然后将html代码插</h2><p>选择器 描述<br>prepend 向每个匹配的元素内部前置内容<br>prependTo 把所有匹配的元素前置到另一个指定的元素集合中<br>append()向每个匹配的元素内部追加内容<br>prepend()向每个匹配的元素内部前置内容<br>appendTo()把所有匹配的元素追加到另一个指定元素的集合中</p>
+<h2 id="prependTo-把所有匹配的元素前置到另一个指定的元素集合中"><a href="#prependTo-把所有匹配的元素前置到另一个指定的元素集合中" class="headerlink" title="prependTo()把所有匹配的元素前置到另一个指定的元素集合中"></a>prependTo()把所有匹配的元素前置到另一个指定的元素集合中</h2><p>选择器 描述<br>insertBefore 在目标元素前面插入集合中每个匹配的元素<br>insertAfter 在目标元素后面插入集合中每个匹配的元素<br>.before()和.insertBefore()实现同样的功能。主要的区别是语法——内容和目标的位置。 对于before()选择表达式在函数前面，内容作为参数，而.insertBefore()刚好相反，内容在方法前面，它将被放在参数里元素的前面<br>.after()和.insertAfter() 实现同样的功能。主要的不同是语法——特别是（插入）内容和目标的位置。 对于after()选择表达式在函数的前面，参数是将要插入的内容。对于 .insertAfter(), 刚好相反，内容在方法前面，它将被放在参数里元素的后面</p>
+<h2 id="before、after与insertBefore。insertAfter的除了目标与位置的不同外，后面的不支持多参数处理"><a href="#before、after与insertBefore。insertAfter的除了目标与位置的不同外，后面的不支持多参数处理" class="headerlink" title="before、after与insertBefore。insertAfter的除了目标与位置的不同外，后面的不支持多参数处理"></a>before、after与insertBefore。insertAfter的除了目标与位置的不同外，后面的不支持多参数处理</h2><p>方法名 参数 事件及数据是否也被移除 元素自身是否被移除<br>remove 支持选择器表达 是 是（无参数时），有参数时要根据参数所涉及的范围</p>
+<h2 id="detach-参数同remove-否-情况同remove"><a href="#detach-参数同remove-否-情况同remove" class="headerlink" title="detach 参数同remove 否 情况同remove"></a>detach 参数同remove 否 情况同remove</h2><h2 id="“html”-parent-方法返回一个包含document的集合，而-“html”-parents-返回一个空集合。"><a href="#“html”-parent-方法返回一个包含document的集合，而-“html”-parents-返回一个空集合。" class="headerlink" title="$( “html” ).parent()方法返回一个包含document的集合，而$( “html” ).parents()返回一个空集合。"></a>$( “html” ).parent()方法返回一个包含document的集合，而$( “html” ).parents()返回一个空集合。</h2><p>parents()和.closest()：<br>起始位置不同：.closest开始于当前元素 .parents开始于父元素<br>遍历的目标不同：.closest要找到指定的目标，.parents遍历到文档根元素，closest向上查找，知道找到一个匹配就停止查找，parents一直查找到根元素，并将匹配的元素加入集合</p>
+<h2 id="结果不同：-closest返回的是包含零个或一个元素的jquery对象，parents返回的是包含零个或一个或多个元素的jquery对象"><a href="#结果不同：-closest返回的是包含零个或一个元素的jquery对象，parents返回的是包含零个或一个或多个元素的jquery对象" class="headerlink" title="结果不同：.closest返回的是包含零个或一个元素的jquery对象，parents返回的是包含零个或一个或多个元素的jquery对象"></a>结果不同：.closest返回的是包含零个或一个元素的jquery对象，parents返回的是包含零个或一个或多个元素的jquery对象</h2><p>each是一个for循环的包装迭代器<br>each通过回调的方式处理，并且会有2个固定的实参，索引与元素<br>each回调方法中的this指向当前迭代的dom元素</p>
+<hr>
+<p>几种方式可以隐藏一个元素：<br>CSS display的值是none。<br>type=”hidden”的表单元素。<br>宽度和高度都显式设置为0。<br>一个祖先元素是隐藏的，该元素是不会在页面上显示<br>CSS visibility的值是hidden</p>
+<h2 id="CSS-opacity的指是0"><a href="#CSS-opacity的指是0" class="headerlink" title="CSS opacity的指是0"></a>CSS opacity的指是0</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Marico WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="Marico Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jQuery/" rel="tag">#jQuery</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/09/11/Oracle 行转列SQL后台代码/" rel="next" title="Oracle 行转列SQL后台代码">
+                <i class="fa fa-chevron-left"></i> Oracle 行转列SQL后台代码
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/26/使用命令行api更轻易得调试web应用/" rel="prev" title="使用命令行API更轻易得调试Web应用">
+                使用命令行API更轻易得调试Web应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/04/28/jQuery基础/" data-title="jQuery基础" data-content data-url="http://yoursite.com/2015/04/28/jQuery基础/">
+  <div class="ds-share-inline">
+    <ul class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/04/28/jQuery基础/" data-title="jQuery基础" data-url="http://yoursite.com/2015/04/28/jQuery基础/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Marico">
+          <p class="site-author-name" itemprop="name">Marico</p>
+          <p class="site-description motion-element" itemprop="description">Front-End Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mayue2015" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/5566587/marico" target="_blank" title="Stack Overflow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Stack Overflow
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2089711385?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/MaYueMarico" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#before向元素的前边添加html代码，如果元素前面有元素了，那将前面的元素前移，然后将html代码插"><span class="nav-number">1.</span> <span class="nav-text">before向元素的前边添加html代码，如果元素前面有元素了，那将前面的元素前移，然后将html代码插</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prependTo-把所有匹配的元素前置到另一个指定的元素集合中"><span class="nav-number">2.</span> <span class="nav-text">prependTo()把所有匹配的元素前置到另一个指定的元素集合中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#before、after与insertBefore。insertAfter的除了目标与位置的不同外，后面的不支持多参数处理"><span class="nav-number">3.</span> <span class="nav-text">before、after与insertBefore。insertAfter的除了目标与位置的不同外，后面的不支持多参数处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#detach-参数同remove-否-情况同remove"><span class="nav-number">4.</span> <span class="nav-text">detach 参数同remove 否 情况同remove</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“html”-parent-方法返回一个包含document的集合，而-“html”-parents-返回一个空集合。"><span class="nav-number">5.</span> <span class="nav-text">$( “html” ).parent()方法返回一个包含document的集合，而$( “html” ).parents()返回一个空集合。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果不同：-closest返回的是包含零个或一个元素的jquery对象，parents返回的是包含零个或一个或多个元素的jquery对象"><span class="nav-number">6.</span> <span class="nav-text">结果不同：.closest返回的是包含零个或一个元素的jquery对象，parents返回的是包含零个或一个或多个元素的jquery对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-opacity的指是0"><span class="nav-number">7.</span> <span class="nav-text">CSS opacity的指是0</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marico</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"marico-mayue"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
